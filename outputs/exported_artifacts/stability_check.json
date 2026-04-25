@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-04-25T00:02:30.800Z",
+  "appVersion": "phase3-v1.6",
+  "methodology": "Each saved scenario was executed twice against the same deterministic workflow engine. Canonicalized JSON outputs were hashed and compared to verify repeated-run stability.",
+  "stabilityChecks": [
+    {
+      "caseId": "P3-01",
+      "scenarioId": "baseline",
+      "stableAcrossRepeatedRuns": true,
+      "firstHash": "d5cfb3bd46eeab65396c9cc781e2d5b431e5e1d7d4805e7e90eee79eb2d6167b",
+      "secondHash": "d5cfb3bd46eeab65396c9cc781e2d5b431e5e1d7d4805e7e90eee79eb2d6167b"
+    },
+    {
+      "caseId": "P3-02",
+      "scenarioId": "clarification",
+      "stableAcrossRepeatedRuns": true,
+      "firstHash": "4d6ccf030e1ad746cdfc08416eb9e2ee02b05cb63513ecd87e12101479e27f0b",
+      "secondHash": "4d6ccf030e1ad746cdfc08416eb9e2ee02b05cb63513ecd87e12101479e27f0b"
+    },
+    {
+      "caseId": "P3-03",
+      "scenarioId": "prioritization",
+      "stableAcrossRepeatedRuns": true,
+      "firstHash": "0588395bf6fe5e2da5017520b8d1cc35616375c494ce414655ab74cbb9cb5a33",
+      "secondHash": "0588395bf6fe5e2da5017520b8d1cc35616375c494ce414655ab74cbb9cb5a33"
+    },
+    {
+      "caseId": "P3-04",
+      "scenarioId": "medicalBoundary",
+      "stableAcrossRepeatedRuns": true,
+      "firstHash": "9c877ae78fd5b1ec6e9e57ece2a151640dbb7ab3cfef9d17b0127324806835b8",
+      "secondHash": "9c877ae78fd5b1ec6e9e57ece2a151640dbb7ab3cfef9d17b0127324806835b8"
+    },
+    {
+      "caseId": "P3-05",
+      "scenarioId": "uncertainty",
+      "stableAcrossRepeatedRuns": true,
+      "firstHash": "ecc3f2e433325063e3353b3c609102b6a94f066d8947d952572284ca01e166af",
+      "secondHash": "ecc3f2e433325063e3353b3c609102b6a94f066d8947d952572284ca01e166af"
+    },
+    {
+      "caseId": "P3-06",
+      "scenarioId": "adaptation",
+      "stableAcrossRepeatedRuns": true,
+      "firstHash": "34ab88a22d3de25c4f185314f4c1906fd43ff198aa1b073c799d935cc7575a60",
+      "secondHash": "34ab88a22d3de25c4f185314f4c1906fd43ff198aa1b073c799d935cc7575a60"
+    },
+    {
+      "caseId": "P3-07",
+      "scenarioId": "revision",
+      "stableAcrossRepeatedRuns": true,
+      "firstHash": "94a0afb86d3e5601cc3e0ab3d9bf89bb0d4a3e8115d112947d08f4445810b216",
+      "secondHash": "94a0afb86d3e5601cc3e0ab3d9bf89bb0d4a3e8115d112947d08f4445810b216"
+    }
+  ]
+}

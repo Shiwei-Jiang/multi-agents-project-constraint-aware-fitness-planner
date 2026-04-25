@@ -1,0 +1,13 @@
+{
+  "project": "Constraint-Aware Fitness Planner",
+  "uses_external_dataset": false,
+  "data_design": {
+    "raw": "No external raw dataset is required for the final artifact. Inputs come from user-entered profile fields and deterministic scenario presets.",
+    "processed": "No offline processed dataset is required. The workflow state and exported sample runs are generated locally at runtime."
+  },
+  "related_artifacts": [
+    "outputs/sample_runs/",
+    "outputs/exported_artifacts/automatic_evaluation_snapshot.json",
+    "outputs/exported_artifacts/stability_check.json"
+  ]
+}

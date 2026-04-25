@@ -1,0 +1,97 @@
+{
+  "generatedAt": "2026-04-25T00:02:30.800Z",
+  "appVersion": "phase3-v1.6",
+  "automaticChecks": [
+    {
+      "caseId": "P3-01",
+      "scenarioId": "baseline",
+      "title": "Baseline constrained planning",
+      "branchType": "happy path + acceptance",
+      "whyItMatters": "Shows the full Track B interaction loop with visible handoffs, reviewed output, and completion.",
+      "screenshot": "screenshots/01_home.png",
+      "protocolState": "completed",
+      "outcome": "accepted",
+      "traceLength": 9,
+      "transitionCount": 7,
+      "accepted": true
+    },
+    {
+      "caseId": "P3-02",
+      "scenarioId": "clarification",
+      "title": "Clarification for ambiguous trigger history",
+      "branchType": "clarification stop",
+      "whyItMatters": "Shows that the system pauses and asks for more information instead of guessing under ambiguity, then can resume after clarification.",
+      "screenshot": "screenshots/02_clarification.png",
+      "protocolState": "awaiting_clarification",
+      "outcome": "clarification_required",
+      "traceLength": 2,
+      "transitionCount": 2,
+      "accepted": false
+    },
+    {
+      "caseId": "P3-03",
+      "scenarioId": "prioritization",
+      "title": "Human prioritization on infeasible goal mix",
+      "branchType": "human escalation",
+      "whyItMatters": "Shows a visible human-in-the-loop checkpoint for unresolved tradeoffs, then can resume after the user revises priorities.",
+      "screenshot": "screenshots/04_prioritization.png",
+      "protocolState": "awaiting_prioritization",
+      "outcome": "human_prioritization_required",
+      "traceLength": 3,
+      "transitionCount": 2,
+      "accepted": false
+    },
+    {
+      "caseId": "P3-04",
+      "scenarioId": "medicalBoundary",
+      "title": "Safety boundary stop",
+      "branchType": "safety boundary",
+      "whyItMatters": "Shows bounded autonomy through a visible non-clinical stop condition.",
+      "screenshot": "screenshots/03_boundary_stop.png",
+      "protocolState": "stopped_boundary",
+      "outcome": "boundary_stop",
+      "traceLength": 2,
+      "transitionCount": 2,
+      "accepted": false
+    },
+    {
+      "caseId": "P3-05",
+      "scenarioId": "uncertainty",
+      "title": "Missing-field uncertainty handling",
+      "branchType": "missing-info uncertainty",
+      "whyItMatters": "Shows refusal to overclaim confidence when key planning fields are still missing.",
+      "screenshot": "screenshots/06_uncertainty.png",
+      "protocolState": "awaiting_clarification",
+      "outcome": "clarification_required",
+      "traceLength": 2,
+      "transitionCount": 2,
+      "accepted": false
+    },
+    {
+      "caseId": "P3-06",
+      "scenarioId": "adaptation",
+      "title": "Adaptation after accepted plan fails",
+      "branchType": "demonstrated adaptation",
+      "whyItMatters": "Shows state-preserving revision after an accepted plan is reopened by structured post-acceptance execution feedback.",
+      "screenshot": "screenshots/05_adaptation.png",
+      "protocolState": "awaiting_user_acceptance",
+      "outcome": "adapted_plan_ready",
+      "traceLength": 12,
+      "transitionCount": 9,
+      "accepted": false
+    },
+    {
+      "caseId": "P3-07",
+      "scenarioId": "revision",
+      "title": "User-requested revision before acceptance",
+      "branchType": "bounded user revision",
+      "whyItMatters": "Shows one more visible human decision before final acceptance rather than immediate completion.",
+      "screenshot": "screenshots/07_state_and_transitions.png",
+      "protocolState": "completed",
+      "outcome": "accepted",
+      "traceLength": 14,
+      "transitionCount": 11,
+      "accepted": true
+    }
+  ]
+}

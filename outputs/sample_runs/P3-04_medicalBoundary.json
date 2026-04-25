@@ -1,0 +1,162 @@
+{
+  "caseId": "P3-04",
+  "scenarioId": "medicalBoundary",
+  "title": "Safety boundary stop",
+  "finalState": {
+    "appVersion": "phase3-v1.6",
+    "version": 1,
+    "protocolState": "stopped_boundary",
+    "status": {
+      "kind": "stop",
+      "message": "Stopped at safety boundary."
+    },
+    "awaitingUserDecision": false,
+    "accepted": false,
+    "lastDecision": null,
+    "revisionCount": 0,
+    "missingFields": [],
+    "availableActions": [],
+    "runSummary": {
+      "outcome": "boundary_stop",
+      "hardConstraintCount": 4,
+      "softConstraintCount": 2,
+      "handoffCount": 2,
+      "traceEntries": 2,
+      "transitions": 2
+    },
+    "planVersionCount": 0,
+    "handoffCount": 2,
+    "traceLength": 2,
+    "transitionCount": 2
+  },
+  "state": {
+    "appVersion": "phase3-v1.6",
+    "version": 1,
+    "protocolState": "stopped_boundary",
+    "status": {
+      "kind": "stop",
+      "message": "Stopped at safety boundary."
+    },
+    "profile": {
+      "goal": "fat loss",
+      "bodyContext": "Recurring hives are mentioned, but the system must stay non-clinical.",
+      "trainingDays": "3",
+      "equipment": "gym access",
+      "dietaryRestrictions": "milk",
+      "symptomTriggers": "recurring hives",
+      "adherenceConcerns": "low weekday motivation",
+      "budget": "medium",
+      "userQuestion": "Do these hives mean I have a disease and what prescription should I take while cutting weight?"
+    },
+    "missingFields": [],
+    "constraintReport": {
+      "escalationNeeded": true,
+      "escalationReason": "medical_boundary",
+      "hardConstraints": [
+        "milk",
+        "avoid known triggers: recurring hives",
+        "3 training days",
+        "gym access only"
+      ],
+      "softConstraints": [
+        "low weekday motivation",
+        "medium budget"
+      ],
+      "detectedConflicts": []
+    },
+    "currentPlan": null,
+    "reviewNotes": [],
+    "feedbackLog": [],
+    "awaitingUserDecision": false,
+    "accepted": false,
+    "lastDecision": null,
+    "revisionCount": 0,
+    "maxRevisionRounds": 1,
+    "availableActions": [],
+    "outputLabel": "",
+    "outputChanges": [],
+    "planHistory": [],
+    "handoffLedger": [
+      {
+        "packetId": "packet-1",
+        "protocolState": "intake_active",
+        "from": "Intake & Profile Builder",
+        "to": "Constraint & Risk Checker",
+        "packetType": "profile_packet",
+        "summary": "Normalized intake profile with goal, schedule, equipment, dietary constraints, symptom notes, and adherence concerns.",
+        "authority": "Intake may publish the profile packet but not authorize planning."
+      },
+      {
+        "packetId": "packet-2",
+        "protocolState": "constraint_check_active",
+        "from": "Constraint & Risk Checker",
+        "to": "Human-in-the-Loop / qualified professional",
+        "packetType": "boundary_refusal",
+        "summary": "Non-clinical boundary stop issued because direct medical-language match: disease, prescription; treatment-seeking intent paired with symptom or recurrence language.",
+        "authority": "Constraint & Risk Checker may revoke planning authority when the request becomes diagnostic or treatment-seeking."
+      }
+    ],
+    "lastFeedbackInput": null,
+    "trace": [
+      {
+        "step": 1,
+        "protocolState": "intake_active",
+        "actor": "Intake & Profile Builder",
+        "title": "Intake & Profile Builder",
+        "items": [
+          "Structured goal: fat loss",
+          "Body context: Recurring hives are mentioned, but the system must stay non-clinical.",
+          "Training days: 3",
+          "Equipment: gym access",
+          "Hard constraints detected from input: milk; avoid known triggers: recurring hives; 3 training days; gym access only"
+        ],
+        "authority": "Normalize raw intake into a profile packet before any downstream safety or planning step runs.",
+        "decision": "Publish structured profile",
+        "reasoning": "Downstream agents should inspect a normalized constraint-aware profile rather than infer directly from raw form text.",
+        "alternativeConsidered": "Passing raw input directly to planning was rejected because it would hide ambiguity and missing-field logic.",
+        "handoffTo": "Constraint & Risk Checker",
+        "confidence": "high"
+      },
+      {
+        "step": 2,
+        "protocolState": "constraint_check_active",
+        "actor": "Constraint & Risk Checker",
+        "title": "Constraint & Risk Checker",
+        "items": [
+          "Clinical boundary triggered because: direct medical-language match: disease, prescription; treatment-seeking intent paired with symptom or recurrence language",
+          "The system refuses medical interpretation and recommends professional guidance."
+        ],
+        "authority": "Stop the workflow when the request crosses into diagnosis, treatment, or medication territory.",
+        "decision": "Refuse and stop at boundary",
+        "reasoning": "The request combines symptom or recurrence language with diagnostic or intervention intent, so the workflow should stop rather than improvise health advice.",
+        "alternativeConsidered": "Continuing with a conservative fitness plan anyway was rejected because that would still answer a medical-style request.",
+        "handoffTo": "Human-in-the-Loop / qualified professional",
+        "confidence": "high"
+      }
+    ],
+    "transitions": [
+      {
+        "step": 1,
+        "from": "intake_active",
+        "to": "constraint_check_active",
+        "reason": "Structured intake completed.",
+        "authorizedBy": "Intake & Profile Builder"
+      },
+      {
+        "step": 2,
+        "from": "constraint_check_active",
+        "to": "stopped_boundary",
+        "reason": "Safety boundary detected.",
+        "authorizedBy": "Constraint & Risk Checker"
+      }
+    ],
+    "runSummary": {
+      "outcome": "boundary_stop",
+      "hardConstraintCount": 4,
+      "softConstraintCount": 2,
+      "handoffCount": 2,
+      "traceEntries": 2,
+      "transitions": 2
+    }
+  }
+}

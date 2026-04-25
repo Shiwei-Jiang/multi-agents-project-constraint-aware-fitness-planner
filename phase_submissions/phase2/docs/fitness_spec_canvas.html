@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Agent System Specification Canvas — Constraint-Aware Fitness Planner</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+    background: #F7F8FA;
+    padding: 20px 16px;
+    min-height: 100vh;
+  }
+  .container { max-width: 1060px; margin: 0 auto; }
+  .header { margin-bottom: 16px; }
+  .header-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 2px solid #990000; padding-bottom: 8px;
+  }
+  .header-bar h1 {
+    font: 700 22px/1.2 Georgia, 'Palatino Linotype', serif;
+    color: #1a1a2e; letter-spacing: -0.3px;
+  }
+  .header-bar .course { font: 600 10px Georgia, serif; color: #990000; }
+  .subtitle {
+    font-size: 11px; color: #5a5a6a; line-height: 1.5;
+    margin-top: 6px; font-style: italic;
+  }
+  .canvas { position: relative; }
+  .flow-indicator {
+    position: absolute; left: -18px; top: 20px; bottom: 20px;
+    width: 4px; border-radius: 2px;
+    background: linear-gradient(to bottom, #2B579A 0%, #2B579A 20%, #0D6B5E 26%, #0D6B5E 48%, #9B2335 54%, #9B2335 74%, #5E35B1 80%, #5E35B1 100%);
+    opacity: 0.25;
+  }
+  .zone { border-radius: 10px; padding: 10px 14px 14px; position: relative; margin-bottom: 12px; }
+  .zone:last-child { margin-bottom: 0; }
+  .zone-1 { background: #F0F4FA; border: 1px solid #B8CCE4; }
+  .zone-2 { background: #EBF7F4; border: 2px solid #8ECFC4; padding: 12px 16px 16px; box-shadow: 0 2px 16px rgba(13,107,94,0.08); }
+  .zone-3 { background: #FDF2F3; border: 1px solid #E8B4B8; }
+  .zone-4 { background: #F3EEFC; border: 1px solid #C5B3E6; }
+  .zone-badge { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 10px; padding: 3px 12px 3px 8px; border-radius: 4px; }
+  .zone-badge-1 { background: #D6E4F5; border: 1px solid #B8CCE4; }
+  .zone-badge-2 { background: #B2E0D6; border: 1px solid #8ECFC4; }
+  .zone-badge-3 { background: #F5D5D8; border: 1px solid #E8B4B8; }
+  .zone-badge-4 { background: #DDD0F0; border: 1px solid #C5B3E6; }
+  .zone-num { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 700 10px Georgia, serif; color: #fff; }
+  .zone-num-1 { background: #2B579A; }
+  .zone-num-2 { background: #0D6B5E; }
+  .zone-num-3 { background: #9B2335; }
+  .zone-num-4 { background: #5E35B1; }
+  .zone-label { font: 700 9px Georgia, serif; letter-spacing: 2px; text-transform: uppercase; }
+  .zone-label-1 { color: #2B579A; }
+  .zone-label-2 { color: #0D6B5E; }
+  .zone-label-3 { color: #9B2335; }
+  .zone-label-4 { color: #5E35B1; }
+  .row { display: grid; gap: 10px; margin-bottom: 10px; }
+  .row:last-child { margin-bottom: 0; }
+  .row-full { grid-template-columns: 1fr; }
+  .row-half { grid-template-columns: 1fr 1fr; }
+  .field { background: #FFFFFF; border-radius: 6px; padding: 10px 14px; position: relative; border: 1px solid rgba(0,0,0,0.07); }
+  .field-z1 { border-left: 3.5px solid #2B579A; }
+  .field-z2 { border-left: 3.5px solid #0D6B5E; }
+  .field-z3 { border-left: 3.5px solid #9B2335; }
+  .field-z4 { border-left: 3.5px solid #5E35B1; }
+  .field.bookend-1 { background: linear-gradient(135deg, #FFFFFF 0%, #F0F4FA 100%); border-color: rgba(43,87,154,0.25); }
+  .field.bookend-4 { background: linear-gradient(135deg, #FFFFFF 0%, #F3EEFC 100%); border-color: rgba(94,53,177,0.25); }
+  .field-num { position: absolute; top: 8px; right: 10px; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 700 9px Georgia, serif; }
+  .field-num-1 { background: #D6E4F5; border: 1px solid #B8CCE4; color: #2B579A; }
+  .field-num-2 { background: #B2E0D6; border: 1px solid #8ECFC4; color: #0D6B5E; }
+  .field-num-3 { background: #F5D5D8; border: 1px solid #E8B4B8; color: #9B2335; }
+  .field-num-4 { background: #DDD0F0; border: 1px solid #C5B3E6; color: #5E35B1; }
+  .field-header { display: flex; align-items: center; gap: 7px; margin-bottom: 7px; padding-right: 28px; }
+  .field-icon { font-size: 15px; line-height: 1; }
+  .field-title { font: 700 12px Georgia, serif; }
+  .field-title.prominent { font-size: 13.5px; }
+  .field-title-1 { color: #2B579A; }
+  .field-title-2 { color: #0D6B5E; }
+  .field-title-3 { color: #9B2335; }
+  .field-title-4 { color: #5E35B1; }
+  .field-text { font-size: 11px; line-height: 1.6; color: #3a3a4a; }
+  .field-rows { display: flex; flex-direction: column; gap: 2px; }
+  .field-row { display: flex; gap: 6px; font-size: 10.5px; line-height: 1.5; }
+  .field-row-label { font-weight: 700; min-width: 82px; flex-shrink: 0; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.3px; padding-top: 1px; }
+  .field-row-label-1 { color: #2B579A; }
+  .field-row-label-2 { color: #0D6B5E; }
+  .field-row-label-3 { color: #9B2335; }
+  .field-row-label-4 { color: #5E35B1; }
+  .field-row-text { color: #3a3a4a; }
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #ddd; padding-top: 8px; margin-top: 14px; }
+  .footer-left { font-size: 9.5px; color: #999; font-style: italic; }
+  .footer-right { font-size: 9px; color: #bbb; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="header-bar">
+      <h1>Multi-Agent System Specification Canvas</h1>
+      <span class="course">95864 · Agentic Technologies · Phase 2</span>
+    </div>
+    <div class="subtitle">Constraint-Aware Fitness Planner — specification canvas for system intent, roles, control boundaries, shared state, internal tools, and evaluation</div>
+  </div>
+
+  <div class="container canvas">
+    <div class="flow-indicator"></div>
+
+    <div class="zone zone-1">
+      <div class="zone-badge zone-badge-1">
+        <span class="zone-num zone-num-1">1</span>
+        <span class="zone-label zone-label-1">System Intent</span>
+      </div>
+
+      <div class="row row-full">
+        <div class="field field-z1 bookend-1">
+          <div class="field-num field-num-1">1</div>
+          <div class="field-header">
+            <span class="field-icon">🎯</span>
+            <span class="field-title prominent field-title-1">System Mission</span>
+          </div>
+          <div class="field-text">Help users create realistic, non-clinical diet and workout plans that reflect multiple real-world constraints such as food intolerances, symptom triggers, limited time, limited equipment, budget constraints, and adherence difficulties. The primary user is a constrained fitness-planning user; the operational secondary stakeholder is a trainer, dietitian, or referring healthcare provider who may inspect the plan summary, warnings, and unresolved risks. Multi-agent coordination is justified because the system must do more than generate recommendations: it must structure user input, detect conflicts, decide when to clarify or stop, review the plausibility of the plan, and revise it later after user feedback while preserving prior context.</div>
+        </div>
+      </div>
+
+      <div class="row row-half">
+        <div class="field field-z1">
+          <div class="field-num field-num-1">2</div>
+          <div class="field-header">
+            <span class="field-icon">👥</span>
+            <span class="field-title field-title-1">Agent Roster & Profiles</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-1">Agents</span><span class="field-row-text"><b>The same four-agent structure from Phase 1 is preserved:</b> <b>Intake &amp; Profile Builder</b> structures input; <b>Constraint &amp; Risk Checker</b> detects conflicts and safe-scope violations; <b>Plan Composer</b> drafts the plan; <b>Review &amp; Adaptation Agent</b> audits and revises; <b>Human</b> supplies missing data, resolves tradeoffs, and reports execution feedback.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-1">Profiling</span><span class="field-row-text">All roles are designer-defined and intentionally narrow. Their responsibilities are separated so the workflow remains auditable and each handoff produces an inspectable artifact.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-1">Justify</span><span class="field-row-text">Separation prevents the system from jumping directly from messy input to final plan. Intake handles structure, Constraint Checker handles safety and conflict detection, Plan Composer handles constructive output, and Review Agent handles reflection and adaptation.</span></div>
+          </div>
+        </div>
+
+        <div class="field field-z1">
+          <div class="field-num field-num-1">3</div>
+          <div class="field-header">
+            <span class="field-icon">🔲</span>
+            <span class="field-title field-title-1">System Scope & Boundaries</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-1">In scope</span><span class="field-row-text">Constraint-aware non-clinical planning, goal-constraint conflict detection, clarification questions, realistic weekly structure, review-driven revision, and adaptation after adherence failure.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-1">Why MA</span><span class="field-row-text">The problem requires specialized workflow decisions, not just one-shot content generation. Multi-role design supports bounded autonomy, visible escalation, and stateful revision.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-1">Out scope</span><span class="field-row-text">Diagnosis, treatment advice, medication advice, disease interpretation, automatic calorie estimation from images, and any claim that the system replaces licensed professionals.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="zone zone-2">
+      <div class="zone-badge zone-badge-2">
+        <span class="zone-num zone-num-2">2</span>
+        <span class="zone-label zone-label-2">Multi-Agent Structure</span>
+      </div>
+
+      <div class="row row-half">
+        <div class="field field-z2">
+          <div class="field-num field-num-2">4</div>
+          <div class="field-header">
+            <span class="field-icon">🏗️</span>
+            <span class="field-title field-title-2">Social &amp; Organizational Structure</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-2">Pattern</span><span class="field-row-text">Centralized orchestration with role-based handoffs. A single workflow controller routes the session through intake, checking, composition, review, and adaptation.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-2">Human role</span><span class="field-row-text">The human is not passive. They act as the resolution authority for missing data, conflicting priorities, and acceptance of the final plan.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-2">Why fit</span><span class="field-row-text">A centralized structure keeps stopping conditions, permissions, and traceability legible, which is important for a health-adjacent bounded system.</span></div>
+          </div>
+        </div>
+
+        <div class="field field-z2">
+          <div class="field-num field-num-2">5</div>
+          <div class="field-header">
+            <span class="field-icon">🔗</span>
+            <span class="field-title field-title-2">Communication Structure &amp; Protocol</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-2">Artifacts</span><span class="field-row-text">Each handoff uses a structured artifact: profile object, constraint report, plan package, review notes, feedback event, and revised plan version.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-2">Routing</span><span class="field-row-text">Clarification loop returns to the human; unresolved hard conflict routes to human prioritization; clinical boundary routes to stop; review failures route back to Plan Composer.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-2">Protocol</span><span class="field-row-text">The prototype uses deterministic JSON-like state updates rather than free-form inter-agent chat, improving comparability across evaluation cases.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-full">
+        <div class="field field-z2">
+          <div class="field-num field-num-2">6</div>
+          <div class="field-header">
+            <span class="field-icon">🖥️</span>
+            <span class="field-title field-title-2">Environment &amp; Interface Structure</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-2">Prototype</span><span class="field-row-text">A browser-based HTML/CSS/JavaScript prototype provides intake, branching, visible workflow logs, and versioned session state. This makes the process inspectable for Phase 2.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-2">Tools</span><span class="field-row-text">The prototype uses an internal tool layer: intake form, missing-field detector, conflict checker, medical boundary checker, plan template library, review heuristic, and state/log renderer. These tools are enough to specify how each role acts without requiring external services.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-2">Grounding</span><span class="field-row-text">The current prototype is grounded in user-provided profile data plus internal rules and templates. No web retrieval or external document corpus is required for the bounded Phase 2 workflow.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="zone zone-3">
+      <div class="zone-badge zone-badge-3">
+        <span class="zone-num zone-num-3">3</span>
+        <span class="zone-label zone-label-3">Multi-Agent Behavior &amp; Control</span>
+      </div>
+
+      <div class="row row-half">
+        <div class="field field-z3">
+          <div class="field-num field-num-3">7</div>
+          <div class="field-header">
+            <span class="field-icon">⚙️</span>
+            <span class="field-title field-title-3">Individual Behavior Specification</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-3">Intake</span><span class="field-row-text">Schema-filling and missing-field detection. Asks follow-up questions when profile completeness is inadequate.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-3">Checker</span><span class="field-row-text">Rule-based gating for hard constraints, ambiguity, and medical boundary detection.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-3">Composer</span><span class="field-row-text">Template-guided planning that maps recommendations to user goal, schedule, equipment, and restrictions.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-3">Review</span><span class="field-row-text">Reflection-style critique and revision focused on adherence realism, hidden conflict detection, and change explanation.</span></div>
+          </div>
+        </div>
+
+        <div class="field field-z3">
+          <div class="field-num field-num-3">8</div>
+          <div class="field-header">
+            <span class="field-icon">🤝</span>
+            <span class="field-title field-title-3">Collective &amp; Social Behavior</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-3">Collective</span><span class="field-row-text">The system behaves cooperatively rather than competitively. Each role narrows uncertainty or improves output quality before the next stage proceeds.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-3">Feedback</span><span class="field-row-text">User feedback creates the main adaptive loop: real-world execution results cause targeted plan revision instead of unrelated regeneration.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-3">BDI-lite</span><span class="field-row-text">Beliefs are captured in the shared profile and constraint report; desires are the user goal and safety requirements; intentions are the currently approved plan version and revision commitments.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-half">
+        <div class="field field-z3">
+          <div class="field-num field-num-3">9</div>
+          <div class="field-header">
+            <span class="field-icon">🛑</span>
+            <span class="field-title field-title-3">Operating Rules, Norms &amp; Human Checkpoints</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-3">Must</span><span class="field-row-text">Respect stated restrictions, ask for clarification under ambiguity, preserve hard constraints during revision, and explain major recommendations.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-3">Must not</span><span class="field-row-text">Diagnose, recommend medication, interpret disease, or overclaim certainty from incomplete data.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-3">Human</span><span class="field-row-text">The user confirms profile details, resolves tradeoffs, accepts or rejects the final plan, and provides execution feedback for adaptation.</span></div>
+          </div>
+        </div>
+
+        <div class="field field-z3">
+          <div class="field-num field-num-3">10</div>
+          <div class="field-header">
+            <span class="field-icon">🔄</span>
+            <span class="field-title field-title-3">Cross-Domain Feedback Topology</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-3">Forward</span><span class="field-row-text">User input → profile structuring → conflict/risk analysis → plan drafting → review → reviewed output.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-3">Reverse</span><span class="field-row-text">Execution feedback → Review &amp; Adaptation Agent → targeted revision of meal structure, session duration, or scheduling.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-3">Stops</span><span class="field-row-text">Boundary stop for clinical requests; pause for missing information; human prioritization for unresolved tradeoffs.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="zone zone-4">
+      <div class="zone-badge zone-badge-4">
+        <span class="zone-num zone-num-4">4</span>
+        <span class="zone-label zone-label-4">Context &amp; Evaluation</span>
+      </div>
+
+      <div class="row row-half">
+        <div class="field field-z4">
+          <div class="field-num field-num-4">11</div>
+          <div class="field-header">
+            <span class="field-icon">🧾</span>
+            <span class="field-title field-title-4">System I/O &amp; Shared State</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-4">Inputs</span><span class="field-row-text">Goal, restrictions, symptom triggers, schedule, equipment, adherence concerns, budget, user notes, and later execution feedback.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-4">Outputs</span><span class="field-row-text">Profile object, clarification prompt, constraint report, plan package, review notes, revised plan, and boundary warnings.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-4">Memory</span><span class="field-row-text"><b>Short-term session memory only.</b> The prototype keeps versioned state during the current interaction. It intentionally does <b>not</b> use long-term persistent memory in Phase 2 because privacy burden and correction cost outweigh the current continuity need.</span></div>
+          </div>
+        </div>
+
+        <div class="field field-z4">
+          <div class="field-num field-num-4">12</div>
+          <div class="field-header">
+            <span class="field-icon">🚨</span>
+            <span class="field-title field-title-4">System Failure Modes &amp; Escalation</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-4">Failures</span><span class="field-row-text">Missed hard constraints, false confidence under ambiguity, overly difficult plans, clinical overreach, and tradeoff denial.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-4">Escalate</span><span class="field-row-text">Clinical requests stop immediately. Missing or vague information triggers clarification. Conflicting hard constraints trigger human prioritization. Review failures trigger revision.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-4">Trace</span><span class="field-row-text">Each branch and stop condition is visible in the prototype log and reflected in versioned state for later evaluation.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-half">
+        <div class="field field-z4">
+          <div class="field-num field-num-4">13</div>
+          <div class="field-header">
+            <span class="field-icon">🌫️</span>
+            <span class="field-title field-title-4">Scenario &amp; Uncertainty Management</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-4">Ambiguity</span><span class="field-row-text">The system treats ambiguous symptom-trigger descriptions as an information gap rather than as permission to infer a medical interpretation.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-4">No RAG</span><span class="field-row-text">RAG is intentionally excluded in Phase 2 because the prototype is not trying to answer document-grounded factual questions. The central challenge is user-specific coordination under constraints, not retrieval quality.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-4">Tool boundary</span><span class="field-row-text">No external action tools are used in Phase 2. The system does not contact APIs, message other people, or operate outside the prototype environment. This keeps permissions narrow and behavior auditable.</span></div>
+          </div>
+        </div>
+
+        <div class="field field-z4 bookend-4">
+          <div class="field-num field-num-4">14</div>
+          <div class="field-header">
+            <span class="field-icon">✅</span>
+            <span class="field-title prominent field-title-4">System Success Criteria</span>
+          </div>
+          <div class="field-rows">
+            <div class="field-row"><span class="field-row-label field-row-label-4">Task</span><span class="field-row-text">All hard constraints satisfied in each test case.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-4">Process</span><span class="field-row-text">Clarification occurs before planning when required; medical boundary requests are stopped; review can revise a weak first draft; unresolved tradeoffs route to the human.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-4">Quality</span><span class="field-row-text">At least one soft adherence preference is reflected, major recommendations include rationale, and revision preserves prior hard constraints.</span></div>
+            <div class="field-row"><span class="field-row-label field-row-label-4">Evidence</span><span class="field-row-text">Traces, case-based evaluation files, failure logs, version notes, and reviewer-facing canvases make the workflow auditable for Phase 2 and reusable in Phase 3.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-left">Prepared for Phase 2 submission using a course-style specification canvas</div>
+      <div class="footer-right">Constraint-Aware Fitness Planner · Shiwei Jiang</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,382 @@
+{
+  "caseId": "P3-U02",
+  "scenarioId": "persona_committed_gym_builder",
+  "title": "Higher-resource gym user focused on muscle gain",
+  "caseType": "persona_variation",
+  "verificationMethod": "mixed",
+  "outcome": "pass",
+  "finalState": {
+    "outcome": "reviewed_plan_ready",
+    "hardConstraintCount": 2,
+    "softConstraintCount": 2,
+    "handoffCount": 4,
+    "traceEntries": 5,
+    "transitions": 4,
+    "protocolState": "awaiting_user_acceptance",
+    "accepted": false,
+    "awaitingUserDecision": true,
+    "traceLength": 5,
+    "transitionCount": 4
+  },
+  "planFingerprint": {
+    "nutritionStrategy": "Use a simple constraint-aware meal pattern built around repeatable staples, explicit avoidance of known triggers, and higher-variety grocery options. Example structure: yogurt-free overnight oats or eggs for breakfast, rice or potatoes with lean protein and vegetables for lunch, and a repeatable dinner bowl built around easy staple ingredients.",
+    "workoutStrategy": "Build a muscle gain routine using gym access with intensity bounded by adherence concerns. Example split: lower-body strength work, upper-body push/pull work, and one full-body conditioning or hypertrophy session, with optional walking or mobility finishers when recovery is limited.",
+    "weeklySchedule": "5 evenly distributed sessions across the week",
+    "adherenceSupports": "repeat meals, a short grocery list, clear fallback meal options, shorter weekday actions, and a weekend prep block for lower-friction adherence",
+    "warnings": [
+      "This is non-clinical planning support, not diagnosis or treatment."
+    ]
+  },
+  "state": {
+    "appVersion": "phase3-v1.6",
+    "version": 1,
+    "protocolState": "awaiting_user_acceptance",
+    "status": {
+      "kind": "ok",
+      "message": "Plan approved."
+    },
+    "profile": {
+      "goal": "muscle gain",
+      "bodyContext": "Higher training tolerance and no clinical concern; wants a structured gain-focused plan.",
+      "trainingDays": "5",
+      "equipment": "gym access",
+      "dietaryRestrictions": "",
+      "symptomTriggers": "",
+      "adherenceConcerns": "prefers structured progression and is comfortable with meal prep",
+      "budget": "high",
+      "userQuestion": "I want a structured gain-focused plan and can commit to more training."
+    },
+    "missingFields": [],
+    "constraintReport": {
+      "hardConstraints": [
+        "5 training days",
+        "gym access only"
+      ],
+      "softConstraints": [
+        "prefers structured progression and is comfortable with meal prep",
+        "high budget"
+      ],
+      "detectedConflicts": [],
+      "escalationNeeded": false,
+      "escalationReason": null,
+      "prioritizationPrompt": ""
+    },
+    "currentPlan": {
+      "nutritionStrategy": "Use a simple constraint-aware meal pattern built around repeatable staples, explicit avoidance of known triggers, and higher-variety grocery options. Example structure: yogurt-free overnight oats or eggs for breakfast, rice or potatoes with lean protein and vegetables for lunch, and a repeatable dinner bowl built around easy staple ingredients.",
+      "workoutStrategy": "Build a muscle gain routine using gym access with intensity bounded by adherence concerns. Example split: lower-body strength work, upper-body push/pull work, and one full-body conditioning or hypertrophy session, with optional walking or mobility finishers when recovery is limited.",
+      "weeklySchedule": "5 evenly distributed sessions across the week",
+      "adherenceSupports": "repeat meals, a short grocery list, clear fallback meal options, shorter weekday actions, and a weekend prep block for lower-friction adherence",
+      "rationale": [
+        "The goal of muscle gain shapes calorie and training emphasis.",
+        "Hard constraints from dietary restrictions and equipment were preserved.",
+        "The weekly structure was adjusted for adherence concerns."
+      ],
+      "warnings": [
+        "This is non-clinical planning support, not diagnosis or treatment."
+      ],
+      "artifactTitle": "Reviewed muscle gain plan for 5 training days using gym access",
+      "profileSummary": [
+        "Primary goal: muscle gain",
+        "Body context shared: Higher training tolerance and no clinical concern; wants a structured gain-focused plan.",
+        "Training availability: 5 days per week",
+        "Equipment available: gym access",
+        "Dietary restriction to preserve: none stated",
+        "Known trigger information: no trigger list supplied",
+        "Adherence priority: prefers structured progression and is comfortable with meal prep",
+        "Budget assumption: high",
+        "Hard constraints preserved: 5 training days; gym access only",
+        "Soft constraints prioritized: prefers structured progression and is comfortable with meal prep; high budget"
+      ],
+      "sampleMealPattern": [
+        "Breakfast: a repeatable breakfast such as eggs or overnight oats with tolerated fruit that stays within constraint-aware limits.",
+        "Lunch: a rice-or-potato bowl with lean protein and vegetables that avoids known trigger foods.",
+        "Dinner: a repeatable dinner bowl or plate using tolerated staples and low-friction prep.",
+        "Backup option: keep one low-effort tolerated backup meal ready if prep capacity drops."
+      ],
+      "groceryFocus": [
+        "Protein anchor: choose 1 to 2 tolerated proteins that fit high spending.",
+        "Carb anchor: keep one reliable starch such as rice, potatoes, or oats for repeat meals.",
+        "Produce anchor: rely on easy vegetables or fruit that do not conflict with known trigger foods.",
+        "Prep anchor: buy enough repeat staples for one weekday rhythm plus one weekend reset."
+      ],
+      "sessionBlueprint": [
+        "Session A: lower-body emphasis plus upper-body push work using gym access.",
+        "Session B: pull, hinge, and core emphasis using gym access.",
+        "Session C: full-body conditioning or mixed session that consolidates the week's work without violating hard constraints."
+      ],
+      "weeklyScheduleDetails": [
+        "Day 1: 20-25 minute session centered on lower body and push work.",
+        "Day 2: 20-25 minute session centered on pull, hinge, and core work.",
+        "Day 3: 20-25 minute session centered on lower body and push work.",
+        "Day 4: 20-25 minute session centered on pull, hinge, and core work.",
+        "Day 5: more substantial weekend full-body session plus a short weekly reset for recovery and planning.",
+        "Meal rhythm: repeat a few reliable meals instead of reinventing the plan each day.",
+        "Fallback: replace any missed weekday session with a short walk or minimum-viable reset instead of abandoning the package."
+      ],
+      "adherenceSupportList": [
+        "repeat meals",
+        "a short grocery list",
+        "clear fallback meal options",
+        "shorter weekday actions",
+        "a weekend prep block for lower-friction adherence"
+      ]
+    },
+    "reviewNotes": [
+      "The review step checked the draft against hard constraints, adherence fit, and non-clinical scope.",
+      "The reviewed package preserves the original hard constraints while improving deliverability.",
+      "Plan remains within non-clinical scope."
+    ],
+    "feedbackLog": [],
+    "awaitingUserDecision": true,
+    "accepted": false,
+    "lastDecision": null,
+    "revisionCount": 0,
+    "maxRevisionRounds": 1,
+    "availableActions": [
+      "acceptPlan",
+      "requestRevision"
+    ],
+    "outputLabel": "Reviewed baseline plan",
+    "outputChanges": [
+      "The draft passed review without substantive revision.",
+      "Hard constraints and non-clinical scope were confirmed before approval."
+    ],
+    "planHistory": [
+      {
+        "version": 1,
+        "label": "Reviewed baseline plan",
+        "changes": [
+          "The draft passed review without substantive revision.",
+          "Hard constraints and non-clinical scope were confirmed before approval."
+        ],
+        "feedbackInput": null,
+        "plan": {
+          "nutritionStrategy": "Use a simple constraint-aware meal pattern built around repeatable staples, explicit avoidance of known triggers, and higher-variety grocery options. Example structure: yogurt-free overnight oats or eggs for breakfast, rice or potatoes with lean protein and vegetables for lunch, and a repeatable dinner bowl built around easy staple ingredients.",
+          "workoutStrategy": "Build a muscle gain routine using gym access with intensity bounded by adherence concerns. Example split: lower-body strength work, upper-body push/pull work, and one full-body conditioning or hypertrophy session, with optional walking or mobility finishers when recovery is limited.",
+          "weeklySchedule": "5 evenly distributed sessions across the week",
+          "adherenceSupports": "repeat meals, a short grocery list, clear fallback meal options, shorter weekday actions, and a weekend prep block for lower-friction adherence",
+          "rationale": [
+            "The goal of muscle gain shapes calorie and training emphasis.",
+            "Hard constraints from dietary restrictions and equipment were preserved.",
+            "The weekly structure was adjusted for adherence concerns."
+          ],
+          "warnings": [
+            "This is non-clinical planning support, not diagnosis or treatment."
+          ],
+          "artifactTitle": "Reviewed muscle gain plan for 5 training days using gym access",
+          "profileSummary": [
+            "Primary goal: muscle gain",
+            "Body context shared: Higher training tolerance and no clinical concern; wants a structured gain-focused plan.",
+            "Training availability: 5 days per week",
+            "Equipment available: gym access",
+            "Dietary restriction to preserve: none stated",
+            "Known trigger information: no trigger list supplied",
+            "Adherence priority: prefers structured progression and is comfortable with meal prep",
+            "Budget assumption: high",
+            "Hard constraints preserved: 5 training days; gym access only",
+            "Soft constraints prioritized: prefers structured progression and is comfortable with meal prep; high budget"
+          ],
+          "sampleMealPattern": [
+            "Breakfast: a repeatable breakfast such as eggs or overnight oats with tolerated fruit that stays within constraint-aware limits.",
+            "Lunch: a rice-or-potato bowl with lean protein and vegetables that avoids known trigger foods.",
+            "Dinner: a repeatable dinner bowl or plate using tolerated staples and low-friction prep.",
+            "Backup option: keep one low-effort tolerated backup meal ready if prep capacity drops."
+          ],
+          "groceryFocus": [
+            "Protein anchor: choose 1 to 2 tolerated proteins that fit high spending.",
+            "Carb anchor: keep one reliable starch such as rice, potatoes, or oats for repeat meals.",
+            "Produce anchor: rely on easy vegetables or fruit that do not conflict with known trigger foods.",
+            "Prep anchor: buy enough repeat staples for one weekday rhythm plus one weekend reset."
+          ],
+          "sessionBlueprint": [
+            "Session A: lower-body emphasis plus upper-body push work using gym access.",
+            "Session B: pull, hinge, and core emphasis using gym access.",
+            "Session C: full-body conditioning or mixed session that consolidates the week's work without violating hard constraints."
+          ],
+          "weeklyScheduleDetails": [
+            "Day 1: 20-25 minute session centered on lower body and push work.",
+            "Day 2: 20-25 minute session centered on pull, hinge, and core work.",
+            "Day 3: 20-25 minute session centered on lower body and push work.",
+            "Day 4: 20-25 minute session centered on pull, hinge, and core work.",
+            "Day 5: more substantial weekend full-body session plus a short weekly reset for recovery and planning.",
+            "Meal rhythm: repeat a few reliable meals instead of reinventing the plan each day.",
+            "Fallback: replace any missed weekday session with a short walk or minimum-viable reset instead of abandoning the package."
+          ],
+          "adherenceSupportList": [
+            "repeat meals",
+            "a short grocery list",
+            "clear fallback meal options",
+            "shorter weekday actions",
+            "a weekend prep block for lower-friction adherence"
+          ]
+        }
+      }
+    ],
+    "handoffLedger": [
+      {
+        "packetId": "packet-1",
+        "protocolState": "intake_active",
+        "from": "Intake & Profile Builder",
+        "to": "Constraint & Risk Checker",
+        "packetType": "profile_packet",
+        "summary": "Normalized intake profile with goal, schedule, equipment, dietary constraints, symptom notes, and adherence concerns.",
+        "authority": "Intake may publish the profile packet but not authorize planning."
+      },
+      {
+        "packetId": "packet-2",
+        "protocolState": "plan_composition_active",
+        "from": "Plan Composer",
+        "to": "Review & Adaptation Agent",
+        "packetType": "draft_plan_package",
+        "summary": "First-pass non-clinical plan package prepared for audit before user delivery.",
+        "authority": "Plan Composer may draft but not release the package."
+      },
+      {
+        "packetId": "packet-3",
+        "protocolState": "review_active",
+        "from": "Review & Adaptation Agent",
+        "to": "Human-in-the-Loop",
+        "packetType": "reviewed_package",
+        "summary": "Reviewed package approved without requiring an extra rewrite.",
+        "authority": "Review owns release approval before the human acceptance checkpoint."
+      },
+      {
+        "packetId": "packet-4",
+        "protocolState": "review_active",
+        "from": "Controller",
+        "to": "Human-in-the-Loop",
+        "packetType": "decision_checkpoint",
+        "summary": "Reviewed package and trace returned to the user for explicit acceptance or bounded revision.",
+        "authority": "Controller may expose the approved package but not accept it on the user's behalf."
+      }
+    ],
+    "lastFeedbackInput": null,
+    "trace": [
+      {
+        "step": 1,
+        "protocolState": "intake_active",
+        "actor": "Intake & Profile Builder",
+        "title": "Intake & Profile Builder",
+        "items": [
+          "Structured goal: muscle gain",
+          "Body context: Higher training tolerance and no clinical concern; wants a structured gain-focused plan.",
+          "Training days: 5",
+          "Equipment: gym access",
+          "Hard constraints detected from input: 5 training days; gym access only"
+        ],
+        "authority": "Normalize raw intake into a profile packet before any downstream safety or planning step runs.",
+        "decision": "Publish structured profile",
+        "reasoning": "Downstream agents should inspect a normalized constraint-aware profile rather than infer directly from raw form text.",
+        "alternativeConsidered": "Passing raw input directly to planning was rejected because it would hide ambiguity and missing-field logic.",
+        "handoffTo": "Constraint & Risk Checker",
+        "confidence": "high"
+      },
+      {
+        "step": 2,
+        "protocolState": "constraint_check_active",
+        "actor": "Constraint & Risk Checker",
+        "title": "Constraint & Risk Checker",
+        "items": [
+          "Hard constraints: 5 training days; gym access only",
+          "Soft constraints: prefers structured progression and is comfortable with meal prep; high budget",
+          "Detected conflicts: none"
+        ],
+        "authority": "Authorize planning, escalate to the human, or stop the session based on feasibility and scope checks.",
+        "decision": "Authorize draft planning",
+        "reasoning": "No blocking ambiguity, scope violation, or unresolved hard tradeoff remains after constraint checking.",
+        "alternativeConsidered": "Holding planning for an unnecessary extra confirmation was rejected.",
+        "handoffTo": "Plan Composer",
+        "confidence": "high"
+      },
+      {
+        "step": 3,
+        "protocolState": "plan_composition_active",
+        "actor": "Plan Composer",
+        "title": "Plan Composer",
+        "items": [
+          "Draft plan package created after constraint checks passed.",
+          "Draft contains nutrition strategy, workout strategy, weekly schedule, adherence supports, rationale, and warnings.",
+          "Package is passed forward for review rather than delivered directly."
+        ],
+        "authority": "Draft the first-pass plan package once the controller authorizes planning.",
+        "decision": "Publish draft package for review",
+        "reasoning": "Composition is allowed only after missing information, boundary checks, and blocking tradeoffs have been resolved or surfaced.",
+        "alternativeConsidered": "Delivering the first draft directly to the user without review was rejected.",
+        "handoffTo": "Review & Adaptation Agent",
+        "confidence": "medium"
+      },
+      {
+        "step": 4,
+        "protocolState": "review_active",
+        "actor": "Review & Adaptation Agent",
+        "title": "Review & Adaptation Agent",
+        "items": [
+          "The review step checked the draft against hard constraints, adherence fit, and non-clinical scope.",
+          "The reviewed package preserves the original hard constraints while improving deliverability.",
+          "Plan remains within non-clinical scope."
+        ],
+        "authority": "Approve the draft, revise it before release, or send back a bounded change request.",
+        "decision": "Approve draft as reviewed",
+        "reasoning": "The draft already fits the current hard constraints, adherence concerns, and non-clinical boundary closely enough to release.",
+        "alternativeConsidered": "An unnecessary extra rewrite was rejected.",
+        "handoffTo": "Human-in-the-Loop",
+        "confidence": "high"
+      },
+      {
+        "step": 5,
+        "protocolState": "review_active",
+        "actor": "Controller",
+        "title": "Final Output",
+        "items": [
+          "Version 1 plan ready.",
+          "Reviewed plan package returned to the user interface.",
+          "The workflow now waits for the user's post-review decision."
+        ],
+        "authority": "Expose the reviewed package only after the authorized review outcome is available.",
+        "decision": "Wait for user inspection",
+        "reasoning": "The reviewed package is ready, but completion authority remains with the human user.",
+        "alternativeConsidered": "Completing the session automatically after review was rejected.",
+        "handoffTo": "Human-in-the-Loop",
+        "confidence": "high"
+      }
+    ],
+    "transitions": [
+      {
+        "step": 1,
+        "from": "intake_active",
+        "to": "constraint_check_active",
+        "reason": "Structured intake completed.",
+        "authorizedBy": "Intake & Profile Builder"
+      },
+      {
+        "step": 2,
+        "from": "constraint_check_active",
+        "to": "plan_composition_active",
+        "reason": "Constraint report cleared planning.",
+        "authorizedBy": "Constraint & Risk Checker"
+      },
+      {
+        "step": 3,
+        "from": "plan_composition_active",
+        "to": "review_active",
+        "reason": "Draft passed to review.",
+        "authorizedBy": "Plan Composer"
+      },
+      {
+        "step": 4,
+        "from": "review_active",
+        "to": "awaiting_user_acceptance",
+        "reason": "Reviewed package ready for user inspection.",
+        "authorizedBy": "Review & Adaptation Agent"
+      }
+    ],
+    "runSummary": {
+      "outcome": "reviewed_plan_ready",
+      "hardConstraintCount": 2,
+      "softConstraintCount": 2,
+      "handoffCount": 4,
+      "traceEntries": 5,
+      "transitions": 4
+    }
+  }
+}

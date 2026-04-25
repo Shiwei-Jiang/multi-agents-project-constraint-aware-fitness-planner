@@ -1,0 +1,210 @@
+{
+  "caseId": "P3-03",
+  "scenarioId": "prioritization",
+  "title": "Human prioritization on infeasible goal mix",
+  "finalState": {
+    "appVersion": "phase3-v1.6",
+    "version": 1,
+    "protocolState": "awaiting_prioritization",
+    "status": {
+      "kind": "warn",
+      "message": "User prioritization required before final planning."
+    },
+    "awaitingUserDecision": false,
+    "accepted": false,
+    "lastDecision": null,
+    "revisionCount": 0,
+    "missingFields": [],
+    "availableActions": [
+      "continueWorkflow"
+    ],
+    "runSummary": {
+      "outcome": "human_prioritization_required",
+      "hardConstraintCount": 2,
+      "softConstraintCount": 2,
+      "handoffCount": 2,
+      "traceEntries": 3,
+      "transitions": 2
+    },
+    "planVersionCount": 0,
+    "handoffCount": 2,
+    "traceLength": 3,
+    "transitionCount": 2
+  },
+  "state": {
+    "appVersion": "phase3-v1.6",
+    "version": 1,
+    "protocolState": "awaiting_prioritization",
+    "status": {
+      "kind": "warn",
+      "message": "User prioritization required before final planning."
+    },
+    "profile": {
+      "goal": "muscle gain",
+      "bodyContext": "No clinical concern stated; the main issue is an aggressive goal under limited resources.",
+      "trainingDays": "1",
+      "equipment": "bodyweight only",
+      "dietaryRestrictions": "",
+      "symptomTriggers": "",
+      "adherenceConcerns": "does not want repeat meals",
+      "budget": "low",
+      "userQuestion": "I want the most aggressive muscle gain plan possible."
+    },
+    "missingFields": [],
+    "constraintReport": {
+      "hardConstraints": [
+        "1 training day",
+        "bodyweight only"
+      ],
+      "softConstraints": [
+        "does not want repeat meals",
+        "low budget"
+      ],
+      "detectedConflicts": [
+        "aggressive muscle gain conflicts with low training frequency and low budget"
+      ],
+      "escalationNeeded": true,
+      "escalationReason": "human_prioritization",
+      "prioritizationPrompt": "Would you rather prioritize a slower but feasible plan, or revise your schedule and budget assumptions?",
+      "prioritizationOptions": [
+        {
+          "id": "prefer_feasible_plan",
+          "label": "Prefer feasible recomposition plan",
+          "description": "Reduce ambition and keep the current time and budget limits so planning can continue without pretending the tradeoff disappeared.",
+          "agentHint": "Constraint & Risk Checker is surfacing the slower-but-feasible path instead of choosing it automatically.",
+          "updates": {
+            "goal": "recomposition",
+            "trainingDays": "1",
+            "budget": "low",
+            "userQuestion": "I would rather follow a slower but feasible plan with my current schedule and budget."
+          }
+        },
+        {
+          "id": "expand_resources",
+          "label": "Keep goal and expand resources",
+          "description": "Preserve the aggressive goal, but explicitly increase training capacity and budget so the workflow can evaluate a more realistic path.",
+          "agentHint": "The human keeps authority over ambition, but must make the resource change explicit before the planner proceeds.",
+          "updates": {
+            "goal": "muscle gain",
+            "trainingDays": "3",
+            "budget": "medium",
+            "userQuestion": "I still want a more aggressive goal, so I can increase training days and spend a bit more."
+          }
+        }
+      ]
+    },
+    "currentPlan": null,
+    "reviewNotes": [],
+    "feedbackLog": [],
+    "awaitingUserDecision": false,
+    "accepted": false,
+    "lastDecision": null,
+    "revisionCount": 0,
+    "maxRevisionRounds": 1,
+    "availableActions": [
+      "continueWorkflow"
+    ],
+    "outputLabel": "",
+    "outputChanges": [],
+    "planHistory": [],
+    "handoffLedger": [
+      {
+        "packetId": "packet-1",
+        "protocolState": "intake_active",
+        "from": "Intake & Profile Builder",
+        "to": "Constraint & Risk Checker",
+        "packetType": "profile_packet",
+        "summary": "Normalized intake profile with goal, schedule, equipment, dietary constraints, symptom notes, and adherence concerns.",
+        "authority": "Intake may publish the profile packet but not authorize planning."
+      },
+      {
+        "packetId": "packet-2",
+        "protocolState": "constraint_check_active",
+        "from": "Constraint & Risk Checker",
+        "to": "Human-in-the-Loop",
+        "packetType": "prioritization_request",
+        "summary": "Would you rather prioritize a slower but feasible plan, or revise your schedule and budget assumptions?",
+        "authority": "Constraint & Risk Checker may surface a value-laden tradeoff but not resolve it automatically."
+      }
+    ],
+    "lastFeedbackInput": null,
+    "trace": [
+      {
+        "step": 1,
+        "protocolState": "intake_active",
+        "actor": "Intake & Profile Builder",
+        "title": "Intake & Profile Builder",
+        "items": [
+          "Structured goal: muscle gain",
+          "Body context: No clinical concern stated; the main issue is an aggressive goal under limited resources.",
+          "Training days: 1",
+          "Equipment: bodyweight only",
+          "Hard constraints detected from input: 1 training day; bodyweight only"
+        ],
+        "authority": "Normalize raw intake into a profile packet before any downstream safety or planning step runs.",
+        "decision": "Publish structured profile",
+        "reasoning": "Downstream agents should inspect a normalized constraint-aware profile rather than infer directly from raw form text.",
+        "alternativeConsidered": "Passing raw input directly to planning was rejected because it would hide ambiguity and missing-field logic.",
+        "handoffTo": "Constraint & Risk Checker",
+        "confidence": "high"
+      },
+      {
+        "step": 2,
+        "protocolState": "constraint_check_active",
+        "actor": "Constraint & Risk Checker",
+        "title": "Constraint & Risk Checker",
+        "items": [
+          "Hard constraints: 1 training day; bodyweight only",
+          "Soft constraints: does not want repeat meals; low budget",
+          "Detected conflicts: aggressive muscle gain conflicts with low training frequency and low budget"
+        ],
+        "authority": "Authorize planning, escalate to the human, or stop the session based on feasibility and scope checks.",
+        "decision": "Escalate to human prioritization",
+        "reasoning": "A hard goal-resource conflict remains unresolved, so the system should not silently choose the user's tradeoff preference.",
+        "alternativeConsidered": "Auto-selecting a slower plan without the user's permission was rejected.",
+        "handoffTo": "Human-in-the-Loop",
+        "confidence": "medium"
+      },
+      {
+        "step": 3,
+        "protocolState": "constraint_check_active",
+        "actor": "Human-in-the-Loop",
+        "title": "Human Prioritization",
+        "items": [
+          "The system detected a tradeoff that should be resolved by the user rather than guessed automatically.",
+          "Would you rather prioritize a slower but feasible plan, or revise your schedule and budget assumptions?"
+        ],
+        "authority": "The human decides which tradeoff direction is acceptable when ambition and resources conflict.",
+        "decision": "Await human prioritization",
+        "reasoning": "The automated workflow identified the conflict but does not own the user's preference over feasibility versus ambition.",
+        "alternativeConsidered": "Letting the planner choose the tradeoff alone was rejected.",
+        "handoffTo": "Human-in-the-Loop",
+        "confidence": "human_authority"
+      }
+    ],
+    "transitions": [
+      {
+        "step": 1,
+        "from": "intake_active",
+        "to": "constraint_check_active",
+        "reason": "Structured intake completed.",
+        "authorizedBy": "Intake & Profile Builder"
+      },
+      {
+        "step": 2,
+        "from": "constraint_check_active",
+        "to": "awaiting_prioritization",
+        "reason": "Goal and resource tradeoff requires human choice.",
+        "authorizedBy": "Constraint & Risk Checker"
+      }
+    ],
+    "runSummary": {
+      "outcome": "human_prioritization_required",
+      "hardConstraintCount": 2,
+      "softConstraintCount": 2,
+      "handoffCount": 2,
+      "traceEntries": 3,
+      "transitions": 2
+    }
+  }
+}

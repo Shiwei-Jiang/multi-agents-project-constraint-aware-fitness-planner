@@ -1,0 +1,156 @@
+{
+  "caseId": "P3-02",
+  "scenarioId": "clarification",
+  "title": "Clarification for ambiguous trigger history",
+  "finalState": {
+    "appVersion": "phase3-v1.6",
+    "version": 1,
+    "protocolState": "awaiting_clarification",
+    "status": {
+      "kind": "warn",
+      "message": "Clarification required before planning."
+    },
+    "awaitingUserDecision": false,
+    "accepted": false,
+    "lastDecision": null,
+    "revisionCount": 0,
+    "missingFields": [
+      "specific symptom-trigger details"
+    ],
+    "availableActions": [
+      "continueWorkflow"
+    ],
+    "runSummary": {
+      "outcome": "clarification_required",
+      "hardConstraintCount": 0,
+      "softConstraintCount": 0,
+      "handoffCount": 2,
+      "traceEntries": 2,
+      "transitions": 2
+    },
+    "planVersionCount": 0,
+    "handoffCount": 2,
+    "traceLength": 2,
+    "transitionCount": 2
+  },
+  "state": {
+    "appVersion": "phase3-v1.6",
+    "version": 1,
+    "protocolState": "awaiting_clarification",
+    "status": {
+      "kind": "warn",
+      "message": "Clarification required before planning."
+    },
+    "profile": {
+      "goal": "fat loss",
+      "bodyContext": "Wants a practical starting point and is not asking for diagnosis.",
+      "trainingDays": "3",
+      "equipment": "resistance bands",
+      "dietaryRestrictions": "gluten intolerance",
+      "symptomTriggers": "certain foods make me feel bad and I react sometimes",
+      "adherenceConcerns": "low weekday motivation",
+      "budget": "medium",
+      "userQuestion": "Please help me figure out a safe plan."
+    },
+    "missingFields": [
+      "specific symptom-trigger details"
+    ],
+    "constraintReport": null,
+    "currentPlan": null,
+    "reviewNotes": [],
+    "feedbackLog": [],
+    "awaitingUserDecision": false,
+    "accepted": false,
+    "lastDecision": null,
+    "revisionCount": 0,
+    "maxRevisionRounds": 1,
+    "availableActions": [
+      "continueWorkflow"
+    ],
+    "outputLabel": "",
+    "outputChanges": [],
+    "planHistory": [],
+    "handoffLedger": [
+      {
+        "packetId": "packet-1",
+        "protocolState": "intake_active",
+        "from": "Intake & Profile Builder",
+        "to": "Constraint & Risk Checker",
+        "packetType": "profile_packet",
+        "summary": "Normalized intake profile with goal, schedule, equipment, dietary constraints, symptom notes, and adherence concerns.",
+        "authority": "Intake may publish the profile packet but not authorize planning."
+      },
+      {
+        "packetId": "packet-2",
+        "protocolState": "constraint_check_active",
+        "from": "Constraint & Risk Checker",
+        "to": "Human-in-the-Loop",
+        "packetType": "clarification_request",
+        "summary": "Clarification request issued for missing or ambiguous evidence: specific symptom-trigger details.",
+        "authority": "Constraint & Risk Checker may pause and expose clarification needs before planning."
+      }
+    ],
+    "lastFeedbackInput": null,
+    "trace": [
+      {
+        "step": 1,
+        "protocolState": "intake_active",
+        "actor": "Intake & Profile Builder",
+        "title": "Intake & Profile Builder",
+        "items": [
+          "Structured goal: fat loss",
+          "Body context: Wants a practical starting point and is not asking for diagnosis.",
+          "Training days: 3",
+          "Equipment: resistance bands",
+          "Hard constraints detected from input: gluten intolerance; avoid known triggers: certain foods make me feel bad and I react sometimes; 3 training days; resistance bands only"
+        ],
+        "authority": "Normalize raw intake into a profile packet before any downstream safety or planning step runs.",
+        "decision": "Publish structured profile",
+        "reasoning": "Downstream agents should inspect a normalized constraint-aware profile rather than infer directly from raw form text.",
+        "alternativeConsidered": "Passing raw input directly to planning was rejected because it would hide ambiguity and missing-field logic.",
+        "handoffTo": "Constraint & Risk Checker",
+        "confidence": "high"
+      },
+      {
+        "step": 2,
+        "protocolState": "constraint_check_active",
+        "actor": "Constraint & Risk Checker",
+        "title": "Clarification Branch",
+        "items": [
+          "Missing critical fields: specific symptom-trigger details",
+          "Clarification question: Which specific foods or situations have caused reactions before, and are there any professionally confirmed restrictions?"
+        ],
+        "authority": "Pause the workflow whenever critical evidence is missing or too ambiguous for safe planning.",
+        "decision": "Pause for clarification",
+        "reasoning": "Planning confidence is insufficient because the current profile is missing or underspecifies: specific symptom-trigger details.",
+        "alternativeConsidered": "Proceeding with guessed values or guessed trigger assumptions was rejected.",
+        "handoffTo": "Human-in-the-Loop",
+        "confidence": "low"
+      }
+    ],
+    "transitions": [
+      {
+        "step": 1,
+        "from": "intake_active",
+        "to": "constraint_check_active",
+        "reason": "Structured intake completed.",
+        "authorizedBy": "Intake & Profile Builder"
+      },
+      {
+        "step": 2,
+        "from": "constraint_check_active",
+        "to": "awaiting_clarification",
+        "reason": "Missing or ambiguous information blocks planning.",
+        "authorizedBy": "Constraint & Risk Checker"
+      }
+    ],
+    "runSummary": {
+      "outcome": "clarification_required",
+      "hardConstraintCount": 0,
+      "softConstraintCount": 0,
+      "handoffCount": 2,
+      "traceEntries": 2,
+      "transitions": 2
+    }
+  }
+}

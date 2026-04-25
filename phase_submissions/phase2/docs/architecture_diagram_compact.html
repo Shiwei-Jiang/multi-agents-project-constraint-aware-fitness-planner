@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 2 Architecture Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .diagram-wrapper {
+            background: white;
+            padding: 20px;
+            border: 1px solid #ecf0f1;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+        .legend {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            border: 1px solid #333;
+        }
+        .c1 { background: #4A90E2; }
+        .c2 { background: #F5A623; }
+        .c3 { background: #E74C3C; }
+        .c4 { background: #27AE60; }
+        .c5 { background: #9B59B6; }
+        .c6 { background: #34495E; }
+        .print-hint {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .container { max-width: 100%; box-shadow: none; }
+            .print-hint { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Phase 2: Constraint-Aware Fitness Planner</h1>
+        <p class="subtitle">Complete Protocol State Machine Architecture - 11 States, 4 SafeCheck Paths</p>
+        
+        <div class="diagram-wrapper">
+            <div class="mermaid">
+graph LR
+    Start([User]) --> Intake["intake_active<br/>Intake Builder<br/>→ profile"]
+    Intake --> Q1{Complete?}
+    Q1 -->|NO| C1["awaiting_clarification<br/>Ask details"]
+    C1 --> Intake
+    Q1 -->|YES| Check["constraint_check_active<br/>Constraint Checker<br/>→ report"]
+    Check --> SafeCheck{SafeCheck?}
+    SafeCheck -->|Ambiguity| C2["awaiting_clarification"]
+    C2 --> Intake
+    SafeCheck -->|Tradeoff| P1["awaiting_prioritization<br/>User prioritizes"]
+    P1 --> Check
+    SafeCheck -->|Boundary| Term1["stopped_boundary<br/>TERMINAL"]
+    SafeCheck -->|Safe| Plan["plan_composition_active<br/>Plan Composer<br/>→ draft"]
+    Plan --> Review["review_active<br/>Review Agent<br/>Check realism"]
+    Review --> Q2{OK?}
+    Q2 -->|NO| Rev["Revise<br/>→ Composer"]
+    Rev --> Plan
+    Q2 -->|YES| Accept["awaiting_user_acceptance<br/>User decides"]
+    Accept --> Q3{Accept?}
+    Q3 -->|NO| Term2["stopped_incomplete<br/>TERMINAL"]
+    Q3 -->|YES/Silent| Done["completed<br/>SUCCESS"]
+    Done --> Later{Feedback?}
+    Later -->|Failed| Adapt["adaptation_active<br/>Adapt & revise"]
+    Adapt --> Accept2["awaiting_user_acceptance<br/>Show revised plan"]
+    Accept2 --> Q3
+    
+    State["SESSION STATE<br/>Profile|Report|Plans|History"]
+    Intake -.->|write| State
+    Check -.->|read/write| State
+    Plan -.->|read| State
+    Review -.->|read/write| State
+    Adapt -.->|read/write| State
+    
+    classDef agent fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff,font-weight:bold,font-size:10px
+    classDef decision fill:#F5A623,stroke:#C17B1F,stroke-width:2px,color:#fff,font-weight:bold,font-size:10px
+    classDef terminal fill:#E74C3C,stroke:#A02B20,stroke-width:2px,color:#fff,font-weight:bold,font-size:9px
+    classDef success fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#fff,font-weight:bold,font-size:10px
+    classDef state fill:#9B59B6,stroke:#6C3A7D,stroke-width:2px,color:#fff,font-weight:bold,font-size:9px
+    classDef memory fill:#34495E,stroke:#1F2937,stroke-width:2px,color:#fff,font-weight:bold,font-size:9px
+    
+    class Intake,Check,Plan,Review,Adapt agent
+    class Q1,SafeCheck,Q2,Q3,Later decision
+    class Term1,Term2 terminal
+    class Done success
+    class C1,C2,P1,Rev,Accept,Accept2 state
+    class State memory
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color c1"></div>
+                <strong>System Agent</strong> - Blue: Active roles (Intake, Constraint, Plan, Review, Adapt)
+            </div>
+            <div class="legend-item">
+                <div class="legend-color c2"></div>
+                <strong>Decision Point</strong> - Orange: Control flow decisions
+            </div>
+            <div class="legend-item">
+                <div class="legend-color c3"></div>
+                <strong>Terminal State</strong> - Red: Boundary violation or user rejection
+            </div>
+            <div class="legend-item">
+                <div class="legend-color c4"></div>
+                <strong>Success State</strong> - Green: Session completed
+            </div>
+            <div class="legend-item">
+                <div class="legend-color c5"></div>
+                <strong>Protocol State</strong> - Purple: Workflow states (awaiting_*, stopped_*)
+            </div>
+            <div class="legend-item">
+                <div class="legend-color c6"></div>
+                <strong>Session State</strong> - Gray: Versioned persistence layer
+            </div>
+        </div>
+
+        <p class="print-hint">💡 Tip: Use browser's Print (Ctrl+P / Cmd+P) or "Save as PDF" to export as image</p>
+    </div>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+    </script>
+</body>
+</html>

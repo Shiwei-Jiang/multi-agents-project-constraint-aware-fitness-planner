@@ -1,0 +1,208 @@
+{
+  "generatedAt": "2026-04-25T00:02:30.783Z",
+  "appVersion": "phase3-v1.6",
+  "sourceCaseId": "P3-02",
+  "description": "Paused clarification session resumed after the user supplied more specific symptom-trigger details.",
+  "finalState": {
+    "appVersion": "phase3-v1.6",
+    "version": 2,
+    "protocolState": "stopped_boundary",
+    "status": {
+      "kind": "stop",
+      "message": "Stopped at safety boundary."
+    },
+    "profile": {
+      "goal": "fat loss",
+      "bodyContext": "Wants a practical starting point and is not asking for diagnosis.",
+      "trainingDays": "3",
+      "equipment": "resistance bands",
+      "dietaryRestrictions": "gluten intolerance",
+      "symptomTriggers": "shellfish causes hives after eating shrimp",
+      "adherenceConcerns": "low weekday motivation",
+      "budget": "medium",
+      "userQuestion": "Please help me figure out a safe plan."
+    },
+    "missingFields": [],
+    "constraintReport": {
+      "escalationNeeded": true,
+      "escalationReason": "medical_boundary",
+      "hardConstraints": [
+        "gluten intolerance",
+        "avoid known triggers: shellfish causes hives after eating shrimp",
+        "3 training days",
+        "resistance bands only"
+      ],
+      "softConstraints": [
+        "low weekday motivation",
+        "medium budget"
+      ],
+      "detectedConflicts": []
+    },
+    "currentPlan": null,
+    "reviewNotes": [],
+    "feedbackLog": [],
+    "awaitingUserDecision": false,
+    "accepted": false,
+    "lastDecision": "continued_from_pause",
+    "revisionCount": 0,
+    "maxRevisionRounds": 1,
+    "availableActions": [],
+    "outputLabel": "",
+    "outputChanges": [],
+    "planHistory": [],
+    "handoffLedger": [
+      {
+        "packetId": "packet-1",
+        "protocolState": "intake_active",
+        "from": "Intake & Profile Builder",
+        "to": "Constraint & Risk Checker",
+        "packetType": "profile_packet",
+        "summary": "Normalized intake profile with goal, schedule, equipment, dietary constraints, symptom notes, and adherence concerns.",
+        "authority": "Intake may publish the profile packet but not authorize planning."
+      },
+      {
+        "packetId": "packet-2",
+        "protocolState": "constraint_check_active",
+        "from": "Constraint & Risk Checker",
+        "to": "Human-in-the-Loop / qualified professional",
+        "packetType": "boundary_refusal",
+        "summary": "Non-clinical boundary stop issued because direct medical-language match: diagnosis.",
+        "authority": "Constraint & Risk Checker may revoke planning authority when the request becomes diagnostic or treatment-seeking."
+      }
+    ],
+    "lastFeedbackInput": null,
+    "trace": [
+      {
+        "step": 1,
+        "protocolState": "intake_active",
+        "actor": "Intake & Profile Builder",
+        "title": "Intake & Profile Builder",
+        "items": [
+          "Structured goal: fat loss",
+          "Body context: Wants a practical starting point and is not asking for diagnosis.",
+          "Training days: 3",
+          "Equipment: resistance bands",
+          "Hard constraints detected from input: gluten intolerance; avoid known triggers: certain foods make me feel bad and I react sometimes; 3 training days; resistance bands only"
+        ],
+        "authority": "Normalize raw intake into a profile packet before any downstream safety or planning step runs.",
+        "decision": "Publish structured profile",
+        "reasoning": "Downstream agents should inspect a normalized constraint-aware profile rather than infer directly from raw form text.",
+        "alternativeConsidered": "Passing raw input directly to planning was rejected because it would hide ambiguity and missing-field logic.",
+        "handoffTo": "Constraint & Risk Checker",
+        "confidence": "high"
+      },
+      {
+        "step": 2,
+        "protocolState": "constraint_check_active",
+        "actor": "Constraint & Risk Checker",
+        "title": "Clarification Branch",
+        "items": [
+          "Missing critical fields: specific symptom-trigger details",
+          "Clarification question: Which specific foods or situations have caused reactions before, and are there any professionally confirmed restrictions?"
+        ],
+        "authority": "Pause the workflow whenever critical evidence is missing or too ambiguous for safe planning.",
+        "decision": "Pause for clarification",
+        "reasoning": "Planning confidence is insufficient because the current profile is missing or underspecifies: specific symptom-trigger details.",
+        "alternativeConsidered": "Proceeding with guessed values or guessed trigger assumptions was rejected.",
+        "handoffTo": "Human-in-the-Loop",
+        "confidence": "low"
+      },
+      {
+        "step": 3,
+        "protocolState": "awaiting_clarification",
+        "actor": "Human-in-the-Loop",
+        "title": "Clarification Response",
+        "items": [
+          "The user answered the outstanding clarification prompt and resubmitted the intake.",
+          "symptom-trigger details updated from \"certain foods make me feel bad and I react sometimes\" to \"shellfish causes hives after eating shrimp\""
+        ],
+        "authority": "The human resolves ambiguity or tradeoffs the automated workflow should not settle alone.",
+        "decision": "Provide missing evidence",
+        "reasoning": "The user supplied the missing or more specific details required for safe continuation.",
+        "alternativeConsidered": "Keeping the prior vague intake unchanged was rejected.",
+        "handoffTo": "Controller -> Intake & Profile Builder",
+        "confidence": "human_authority"
+      },
+      {
+        "step": 4,
+        "protocolState": "intake_active",
+        "actor": "Intake & Profile Builder",
+        "title": "Intake & Profile Builder",
+        "items": [
+          "Structured goal: fat loss",
+          "Body context: Wants a practical starting point and is not asking for diagnosis.",
+          "Training days: 3",
+          "Equipment: resistance bands",
+          "Hard constraints detected from input: gluten intolerance; avoid known triggers: shellfish causes hives after eating shrimp; 3 training days; resistance bands only"
+        ],
+        "authority": "Normalize raw intake into a profile packet before any downstream safety or planning step runs.",
+        "decision": "Publish structured profile",
+        "reasoning": "Downstream agents should inspect a normalized constraint-aware profile rather than infer directly from raw form text.",
+        "alternativeConsidered": "Passing raw input directly to planning was rejected because it would hide ambiguity and missing-field logic.",
+        "handoffTo": "Constraint & Risk Checker",
+        "confidence": "high"
+      },
+      {
+        "step": 5,
+        "protocolState": "constraint_check_active",
+        "actor": "Constraint & Risk Checker",
+        "title": "Constraint & Risk Checker",
+        "items": [
+          "Clinical boundary triggered because: direct medical-language match: diagnosis",
+          "The system refuses medical interpretation and recommends professional guidance."
+        ],
+        "authority": "Stop the workflow when the request crosses into diagnosis, treatment, or medication territory.",
+        "decision": "Refuse and stop at boundary",
+        "reasoning": "The request combines symptom or recurrence language with diagnostic or intervention intent, so the workflow should stop rather than improvise health advice.",
+        "alternativeConsidered": "Continuing with a conservative fitness plan anyway was rejected because that would still answer a medical-style request.",
+        "handoffTo": "Human-in-the-Loop / qualified professional",
+        "confidence": "high"
+      }
+    ],
+    "transitions": [
+      {
+        "step": 1,
+        "from": "intake_active",
+        "to": "constraint_check_active",
+        "reason": "Structured intake completed.",
+        "authorizedBy": "Intake & Profile Builder"
+      },
+      {
+        "step": 2,
+        "from": "constraint_check_active",
+        "to": "awaiting_clarification",
+        "reason": "Missing or ambiguous information blocks planning.",
+        "authorizedBy": "Constraint & Risk Checker"
+      },
+      {
+        "step": 3,
+        "from": "awaiting_clarification",
+        "to": "intake_active",
+        "reason": "User supplied clarification and resumed the paused workflow.",
+        "authorizedBy": "Human-in-the-Loop"
+      },
+      {
+        "step": 4,
+        "from": "intake_active",
+        "to": "constraint_check_active",
+        "reason": "Structured intake completed.",
+        "authorizedBy": "Intake & Profile Builder"
+      },
+      {
+        "step": 5,
+        "from": "constraint_check_active",
+        "to": "stopped_boundary",
+        "reason": "Safety boundary detected.",
+        "authorizedBy": "Constraint & Risk Checker"
+      }
+    ],
+    "runSummary": {
+      "outcome": "boundary_stop",
+      "hardConstraintCount": 4,
+      "softConstraintCount": 2,
+      "handoffCount": 2,
+      "traceEntries": 5,
+      "transitions": 5
+    }
+  }
+}

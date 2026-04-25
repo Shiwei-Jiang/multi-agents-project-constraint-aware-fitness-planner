@@ -1,0 +1,661 @@
+{
+  "caseId": "P3-06",
+  "scenarioId": "adaptation",
+  "title": "Adaptation after accepted plan fails",
+  "finalState": {
+    "appVersion": "phase3-v1.6",
+    "version": 3,
+    "protocolState": "awaiting_user_acceptance",
+    "status": {
+      "kind": "ok",
+      "message": "Plan adapted using preserved session state."
+    },
+    "awaitingUserDecision": true,
+    "accepted": false,
+    "lastDecision": "post_execution_feedback",
+    "revisionCount": 0,
+    "missingFields": [],
+    "availableActions": [
+      "acceptPlan",
+      "requestRevision"
+    ],
+    "runSummary": {
+      "outcome": "adapted_plan_ready",
+      "hardConstraintCount": 4,
+      "softConstraintCount": 2,
+      "handoffCount": 9,
+      "traceEntries": 12,
+      "transitions": 9
+    },
+    "planVersionCount": 2,
+    "handoffCount": 9,
+    "traceLength": 12,
+    "transitionCount": 9
+  },
+  "state": {
+    "appVersion": "phase3-v1.6",
+    "version": 3,
+    "protocolState": "awaiting_user_acceptance",
+    "status": {
+      "kind": "ok",
+      "message": "Plan adapted using preserved session state."
+    },
+    "profile": {
+      "goal": "fat loss",
+      "bodyContext": "Busy student schedule with recovery and consistency concerns, but no request for clinical interpretation.",
+      "trainingDays": "3",
+      "equipment": "resistance bands",
+      "dietaryRestrictions": "gluten intolerance",
+      "symptomTriggers": "shellfish causes hives",
+      "adherenceConcerns": "low weekday motivation and low weekday meal-prep capacity",
+      "budget": "medium",
+      "userQuestion": "I want a realistic plan and not anything medical."
+    },
+    "missingFields": [],
+    "constraintReport": {
+      "hardConstraints": [
+        "gluten intolerance",
+        "avoid known triggers: shellfish causes hives",
+        "3 training days",
+        "resistance bands only"
+      ],
+      "softConstraints": [
+        "low weekday motivation and low weekday meal-prep capacity",
+        "medium budget"
+      ],
+      "detectedConflicts": [],
+      "escalationNeeded": false,
+      "escalationReason": null,
+      "prioritizationPrompt": ""
+    },
+    "currentPlan": {
+      "nutritionStrategy": "Use a simple gluten intolerance meal pattern built around repeatable staples, explicit avoidance of known triggers, and moderate-cost grocery items. Example structure: yogurt-free overnight oats or eggs for breakfast, rice or potatoes with lean protein and vegetables for lunch, and a repeatable dinner bowl built around tolerated ingredients.",
+      "workoutStrategy": "Build a fat loss routine using resistance bands with two short weekday sessions, one longer weekend full-body session, and optional low-pressure walking on tired days.",
+      "weeklySchedule": "2 short weekday sessions plus 1 longer weekend session, with batch-prep meals and low-prep backups.",
+      "adherenceSupports": "Repeatable weekday meals, weekend prep block, shorter weekday workouts, fallback walk option, and a backup low-effort dinner list.",
+      "rationale": [
+        "Weekday friction was reduced because the user reported time overload after execution.",
+        "Session length was shortened to improve adherence.",
+        "Original hard constraints were preserved during revision."
+      ],
+      "warnings": [
+        "This is non-clinical planning support, not diagnosis or treatment."
+      ],
+      "artifactTitle": "Reviewed fat loss plan for 3 training days using resistance bands",
+      "profileSummary": [
+        "Primary goal: fat loss",
+        "Body context shared: Busy student schedule with recovery and consistency concerns, but no request for clinical interpretation.",
+        "Training availability: 3 days per week",
+        "Equipment available: resistance bands",
+        "Dietary restriction to preserve: gluten intolerance",
+        "Known trigger information: shellfish causes hives",
+        "Adherence priority: low weekday motivation and low weekday meal-prep capacity",
+        "Budget assumption: medium",
+        "Hard constraints preserved: gluten intolerance; avoid known triggers: shellfish causes hives; 3 training days; resistance bands only",
+        "Soft constraints prioritized: low weekday motivation and low weekday meal-prep capacity; medium budget"
+      ],
+      "sampleMealPattern": [
+        "Breakfast: a fast repeat option such as eggs, tolerated fruit, and overnight oats that stays within gluten intolerance limits.",
+        "Lunch: a simple bowl or leftovers built from one protein, one starch, and one vegetable that avoids shellfish.",
+        "Dinner: a repeatable dinner bowl or plate using tolerated staples and low-friction prep.",
+        "Backup option: keep one no-cook or microwaveable tolerated meal ready for busy weekdays"
+      ],
+      "groceryFocus": [
+        "Protein anchor: choose 1 to 2 tolerated proteins that fit medium spending.",
+        "Carb anchor: keep one reliable starch such as rice, potatoes, or oats for repeat meals.",
+        "Produce anchor: rely on easy vegetables or fruit that do not conflict with shellfish.",
+        "Convenience anchor: keep 1 to 2 low-prep backup foods so the plan survives busy weekdays."
+      ],
+      "sessionBlueprint": [
+        "Session A: lower-body emphasis plus upper-body push work using resistance bands in a minimum-viable format.",
+        "Session B: pull, hinge, and core emphasis using resistance bands with a short restart-friendly structure.",
+        "Session C: full-body conditioning or mixed session that consolidates the week's work without violating hard constraints."
+      ],
+      "weeklyScheduleDetails": [
+        "Day 1: 15-20 minute weekday session centered on lower body and push work.",
+        "Day 2: 15-20 minute weekday session centered on pull, hinge, and core work.",
+        "Day 3: longer weekend full-body session plus a weekly reset for meal prep and recovery.",
+        "Meal rhythm: keep weekday meals repetitive and shift most prep work to the weekend.",
+        "Fallback: replace any missed weekday session with a short walk or minimum-viable reset instead of abandoning the package."
+      ],
+      "adherenceSupportList": [
+        "Repeatable weekday meals",
+        "weekend prep block",
+        "shorter weekday workouts",
+        "fallback walk option",
+        "a backup low-effort dinner list."
+      ]
+    },
+    "reviewNotes": [
+      "Adaptation triggered by post-acceptance execution feedback.",
+      "Goal and hard constraints were preserved.",
+      "The revised package remains within non-clinical scope.",
+      "Workout duration was reduced after the user reported time overload."
+    ],
+    "feedbackLog": [
+      "After trying the accepted plan, the workouts felt too long to finish consistently after class."
+    ],
+    "awaitingUserDecision": true,
+    "accepted": false,
+    "lastDecision": "post_execution_feedback",
+    "revisionCount": 0,
+    "maxRevisionRounds": 1,
+    "availableActions": [
+      "acceptPlan",
+      "requestRevision"
+    ],
+    "outputLabel": "Adapted reviewed plan",
+    "outputChanges": [
+      "Weekday sessions were shortened after the user reported time overload.",
+      "Adherence supports were updated to reduce time burden.",
+      "Original hard constraints and non-clinical scope were preserved during adaptation."
+    ],
+    "planHistory": [
+      {
+        "version": 1,
+        "label": "Reviewed baseline plan",
+        "changes": [
+          "Weekday session load was reduced to improve adherence.",
+          "The workout structure was revised toward shorter weekday sessions and one longer weekend session.",
+          "Adherence supports were strengthened with batch prep and fallback options."
+        ],
+        "feedbackInput": null,
+        "plan": {
+          "nutritionStrategy": "Use a simple gluten intolerance meal pattern built around repeatable staples, explicit avoidance of known triggers, and moderate-cost grocery items. Example structure: yogurt-free overnight oats or eggs for breakfast, rice or potatoes with lean protein and vegetables for lunch, and a repeatable dinner bowl built around tolerated ingredients.",
+          "workoutStrategy": "Build a fat loss routine using resistance bands with two short weekday sessions, one longer weekend full-body session, and optional low-pressure walking on tired days.",
+          "weeklySchedule": "2 shorter weekday sessions plus 1 longer weekend session across 3 total training days",
+          "adherenceSupports": "repeatable weekday meals, a weekend batch-prep block, shorter weekday workouts, fallback walk options, and low-prep backups",
+          "rationale": [
+            "The goal of fat loss shapes calorie and training emphasis.",
+            "The rewrite reduced weekday burden after reviewer feedback.",
+            "Hard constraints and non-clinical scope were preserved during the bounded rewrite."
+          ],
+          "warnings": [
+            "This is non-clinical planning support, not diagnosis or treatment."
+          ],
+          "artifactTitle": "Reviewed fat loss plan for 3 training days using resistance bands",
+          "profileSummary": [
+            "Primary goal: fat loss",
+            "Body context shared: Busy student schedule with recovery and consistency concerns, but no request for clinical interpretation.",
+            "Training availability: 3 days per week",
+            "Equipment available: resistance bands",
+            "Dietary restriction to preserve: gluten intolerance",
+            "Known trigger information: shellfish causes hives",
+            "Adherence priority: low weekday motivation and low weekday meal-prep capacity",
+            "Budget assumption: medium",
+            "Hard constraints preserved: gluten intolerance; avoid known triggers: shellfish causes hives; 3 training days; resistance bands only",
+            "Soft constraints prioritized: low weekday motivation and low weekday meal-prep capacity; medium budget"
+          ],
+          "sampleMealPattern": [
+            "Breakfast: a fast repeat option such as eggs, tolerated fruit, and overnight oats that stays within gluten intolerance limits.",
+            "Lunch: a simple bowl or leftovers built from one protein, one starch, and one vegetable that avoids shellfish.",
+            "Dinner: a repeatable dinner bowl or plate using tolerated staples and low-friction prep.",
+            "Backup option: keep one no-cook or microwaveable tolerated meal ready for busy weekdays"
+          ],
+          "groceryFocus": [
+            "Protein anchor: choose 1 to 2 tolerated proteins that fit medium spending.",
+            "Carb anchor: keep one reliable starch such as rice, potatoes, or oats for repeat meals.",
+            "Produce anchor: rely on easy vegetables or fruit that do not conflict with shellfish.",
+            "Convenience anchor: keep 1 to 2 low-prep backup foods so the plan survives busy weekdays."
+          ],
+          "sessionBlueprint": [
+            "Session A: lower-body emphasis plus upper-body push work using resistance bands in a minimum-viable format.",
+            "Session B: pull, hinge, and core emphasis using resistance bands with a short restart-friendly structure.",
+            "Session C: full-body conditioning or mixed session that consolidates the week's work without violating hard constraints."
+          ],
+          "weeklyScheduleDetails": [
+            "Day 1: 15-20 minute weekday session centered on lower body and push work.",
+            "Day 2: 15-20 minute weekday session centered on pull, hinge, and core work.",
+            "Day 3: longer weekend full-body session plus a weekly reset for meal prep and recovery.",
+            "Meal rhythm: keep weekday meals repetitive and shift most prep work to the weekend.",
+            "Fallback: replace any missed weekday session with a short walk or minimum-viable reset instead of abandoning the package."
+          ],
+          "adherenceSupportList": [
+            "repeatable weekday meals",
+            "a weekend batch-prep block",
+            "shorter weekday workouts",
+            "fallback walk options",
+            "low-prep backups"
+          ]
+        }
+      },
+      {
+        "version": 3,
+        "label": "Adapted reviewed plan",
+        "changes": [
+          "Weekday sessions were shortened after the user reported time overload.",
+          "Adherence supports were updated to reduce time burden.",
+          "Original hard constraints and non-clinical scope were preserved during adaptation."
+        ],
+        "feedbackInput": {
+          "category": "time_overload",
+          "notes": ""
+        },
+        "plan": {
+          "nutritionStrategy": "Use a simple gluten intolerance meal pattern built around repeatable staples, explicit avoidance of known triggers, and moderate-cost grocery items. Example structure: yogurt-free overnight oats or eggs for breakfast, rice or potatoes with lean protein and vegetables for lunch, and a repeatable dinner bowl built around tolerated ingredients.",
+          "workoutStrategy": "Build a fat loss routine using resistance bands with two short weekday sessions, one longer weekend full-body session, and optional low-pressure walking on tired days.",
+          "weeklySchedule": "2 short weekday sessions plus 1 longer weekend session, with batch-prep meals and low-prep backups.",
+          "adherenceSupports": "Repeatable weekday meals, weekend prep block, shorter weekday workouts, fallback walk option, and a backup low-effort dinner list.",
+          "rationale": [
+            "Weekday friction was reduced because the user reported time overload after execution.",
+            "Session length was shortened to improve adherence.",
+            "Original hard constraints were preserved during revision."
+          ],
+          "warnings": [
+            "This is non-clinical planning support, not diagnosis or treatment."
+          ],
+          "artifactTitle": "Reviewed fat loss plan for 3 training days using resistance bands",
+          "profileSummary": [
+            "Primary goal: fat loss",
+            "Body context shared: Busy student schedule with recovery and consistency concerns, but no request for clinical interpretation.",
+            "Training availability: 3 days per week",
+            "Equipment available: resistance bands",
+            "Dietary restriction to preserve: gluten intolerance",
+            "Known trigger information: shellfish causes hives",
+            "Adherence priority: low weekday motivation and low weekday meal-prep capacity",
+            "Budget assumption: medium",
+            "Hard constraints preserved: gluten intolerance; avoid known triggers: shellfish causes hives; 3 training days; resistance bands only",
+            "Soft constraints prioritized: low weekday motivation and low weekday meal-prep capacity; medium budget"
+          ],
+          "sampleMealPattern": [
+            "Breakfast: a fast repeat option such as eggs, tolerated fruit, and overnight oats that stays within gluten intolerance limits.",
+            "Lunch: a simple bowl or leftovers built from one protein, one starch, and one vegetable that avoids shellfish.",
+            "Dinner: a repeatable dinner bowl or plate using tolerated staples and low-friction prep.",
+            "Backup option: keep one no-cook or microwaveable tolerated meal ready for busy weekdays"
+          ],
+          "groceryFocus": [
+            "Protein anchor: choose 1 to 2 tolerated proteins that fit medium spending.",
+            "Carb anchor: keep one reliable starch such as rice, potatoes, or oats for repeat meals.",
+            "Produce anchor: rely on easy vegetables or fruit that do not conflict with shellfish.",
+            "Convenience anchor: keep 1 to 2 low-prep backup foods so the plan survives busy weekdays."
+          ],
+          "sessionBlueprint": [
+            "Session A: lower-body emphasis plus upper-body push work using resistance bands in a minimum-viable format.",
+            "Session B: pull, hinge, and core emphasis using resistance bands with a short restart-friendly structure.",
+            "Session C: full-body conditioning or mixed session that consolidates the week's work without violating hard constraints."
+          ],
+          "weeklyScheduleDetails": [
+            "Day 1: 15-20 minute weekday session centered on lower body and push work.",
+            "Day 2: 15-20 minute weekday session centered on pull, hinge, and core work.",
+            "Day 3: longer weekend full-body session plus a weekly reset for meal prep and recovery.",
+            "Meal rhythm: keep weekday meals repetitive and shift most prep work to the weekend.",
+            "Fallback: replace any missed weekday session with a short walk or minimum-viable reset instead of abandoning the package."
+          ],
+          "adherenceSupportList": [
+            "Repeatable weekday meals",
+            "weekend prep block",
+            "shorter weekday workouts",
+            "fallback walk option",
+            "a backup low-effort dinner list."
+          ]
+        }
+      }
+    ],
+    "handoffLedger": [
+      {
+        "packetId": "packet-1",
+        "protocolState": "intake_active",
+        "from": "Intake & Profile Builder",
+        "to": "Constraint & Risk Checker",
+        "packetType": "profile_packet",
+        "summary": "Normalized intake profile with goal, schedule, equipment, dietary constraints, symptom notes, and adherence concerns.",
+        "authority": "Intake may publish the profile packet but not authorize planning."
+      },
+      {
+        "packetId": "packet-2",
+        "protocolState": "plan_composition_active",
+        "from": "Plan Composer",
+        "to": "Review & Adaptation Agent",
+        "packetType": "draft_plan_package",
+        "summary": "First-pass non-clinical plan package prepared for audit before user delivery.",
+        "authority": "Plan Composer may draft but not release the package."
+      },
+      {
+        "packetId": "packet-3",
+        "protocolState": "review_active",
+        "from": "Review & Adaptation Agent",
+        "to": "Plan Composer",
+        "packetType": "rewrite_request",
+        "summary": "Bounded rewrite request: reduce weekday burden and increase adherence support before release.",
+        "authority": "Review may reject the current draft and request a constrained rewrite."
+      },
+      {
+        "packetId": "packet-4",
+        "protocolState": "plan_composition_active",
+        "from": "Plan Composer",
+        "to": "Review & Adaptation Agent",
+        "packetType": "revised_draft_package",
+        "summary": "Revised draft returned after reducing weekday load and improving fallback supports.",
+        "authority": "Plan Composer may answer only the bounded rewrite request it received."
+      },
+      {
+        "packetId": "packet-5",
+        "protocolState": "review_active",
+        "from": "Review & Adaptation Agent",
+        "to": "Human-in-the-Loop",
+        "packetType": "reviewed_package",
+        "summary": "Reviewed package approved after visible reviewer-composer disagreement and rewrite.",
+        "authority": "Review owns release approval before the human acceptance checkpoint."
+      },
+      {
+        "packetId": "packet-6",
+        "protocolState": "review_active",
+        "from": "Controller",
+        "to": "Human-in-the-Loop",
+        "packetType": "decision_checkpoint",
+        "summary": "Reviewed package and trace returned to the user for explicit acceptance or bounded revision.",
+        "authority": "Controller may expose the approved package but not accept it on the user's behalf."
+      },
+      {
+        "packetId": "packet-7",
+        "protocolState": "awaiting_user_acceptance",
+        "from": "Human-in-the-Loop",
+        "to": "Controller",
+        "packetType": "acceptance_decision",
+        "summary": "The end user accepted the current reviewed package for execution.",
+        "authority": "Only the human can grant final acceptance."
+      },
+      {
+        "packetId": "packet-8",
+        "protocolState": "adaptation_active",
+        "from": "Human-in-the-Loop",
+        "to": "Review & Adaptation Agent",
+        "packetType": "execution_feedback",
+        "summary": "After trying the accepted plan, the workouts felt too long to finish consistently after class.",
+        "authority": "The human may reopen the workflow with structured execution evidence after trying the plan."
+      },
+      {
+        "packetId": "packet-9",
+        "protocolState": "adaptation_active",
+        "from": "Review & Adaptation Agent",
+        "to": "Human-in-the-Loop",
+        "packetType": "adapted_package",
+        "summary": "Adapted reviewed package returned after preserving hard constraints and updating the failed sections.",
+        "authority": "Review & Adaptation may revise the accepted package but still returns it for fresh human inspection."
+      }
+    ],
+    "lastFeedbackInput": {
+      "category": "time_overload",
+      "notes": ""
+    },
+    "trace": [
+      {
+        "step": 1,
+        "protocolState": "intake_active",
+        "actor": "Intake & Profile Builder",
+        "title": "Intake & Profile Builder",
+        "items": [
+          "Structured goal: fat loss",
+          "Body context: Busy student schedule with recovery and consistency concerns, but no request for clinical interpretation.",
+          "Training days: 3",
+          "Equipment: resistance bands",
+          "Hard constraints detected from input: gluten intolerance; avoid known triggers: shellfish causes hives; 3 training days; resistance bands only"
+        ],
+        "authority": "Normalize raw intake into a profile packet before any downstream safety or planning step runs.",
+        "decision": "Publish structured profile",
+        "reasoning": "Downstream agents should inspect a normalized constraint-aware profile rather than infer directly from raw form text.",
+        "alternativeConsidered": "Passing raw input directly to planning was rejected because it would hide ambiguity and missing-field logic.",
+        "handoffTo": "Constraint & Risk Checker",
+        "confidence": "high"
+      },
+      {
+        "step": 2,
+        "protocolState": "constraint_check_active",
+        "actor": "Constraint & Risk Checker",
+        "title": "Constraint & Risk Checker",
+        "items": [
+          "Hard constraints: gluten intolerance; avoid known triggers: shellfish causes hives; 3 training days; resistance bands only",
+          "Soft constraints: low weekday motivation and low weekday meal-prep capacity; medium budget",
+          "Detected conflicts: none"
+        ],
+        "authority": "Authorize planning, escalate to the human, or stop the session based on feasibility and scope checks.",
+        "decision": "Authorize draft planning",
+        "reasoning": "No blocking ambiguity, scope violation, or unresolved hard tradeoff remains after constraint checking.",
+        "alternativeConsidered": "Holding planning for an unnecessary extra confirmation was rejected.",
+        "handoffTo": "Plan Composer",
+        "confidence": "high"
+      },
+      {
+        "step": 3,
+        "protocolState": "plan_composition_active",
+        "actor": "Plan Composer",
+        "title": "Plan Composer",
+        "items": [
+          "Draft plan package created after constraint checks passed.",
+          "Draft contains nutrition strategy, workout strategy, weekly schedule, adherence supports, rationale, and warnings.",
+          "Package is passed forward for review rather than delivered directly."
+        ],
+        "authority": "Draft the first-pass plan package once the controller authorizes planning.",
+        "decision": "Publish draft package for review",
+        "reasoning": "Composition is allowed only after missing information, boundary checks, and blocking tradeoffs have been resolved or surfaced.",
+        "alternativeConsidered": "Delivering the first draft directly to the user without review was rejected.",
+        "handoffTo": "Review & Adaptation Agent",
+        "confidence": "medium"
+      },
+      {
+        "step": 4,
+        "protocolState": "review_active",
+        "actor": "Review & Adaptation Agent",
+        "title": "Review & Adaptation Agent",
+        "items": [
+          "Reviewer disagreed with the initial weekday burden and requested a bounded rewrite before approval.",
+          "Weekday workload and meal-prep friction should be reduced before the package is released."
+        ],
+        "authority": "Approve the draft, revise it before release, or send back a bounded change request.",
+        "decision": "Request bounded rewrite before approval",
+        "reasoning": "The reviewer judged the first draft as too burdensome to release unchanged, so the next step is a visible rewrite request rather than a silent inline edit.",
+        "alternativeConsidered": "Passing the first draft through unchanged was rejected.",
+        "handoffTo": "Plan Composer",
+        "confidence": "medium"
+      },
+      {
+        "step": 5,
+        "protocolState": "plan_composition_active",
+        "actor": "Plan Composer",
+        "title": "Plan Composer",
+        "items": [
+          "The Plan Composer received a bounded rewrite request from review and revised the draft accordingly.",
+          "Weekday session load should be reduced and restart-friendly supports strengthened.",
+          "Keep the original hard constraints and non-clinical scope unchanged during the rewrite."
+        ],
+        "authority": "Rewrite the draft only within the bounded changes requested by review.",
+        "decision": "Publish revised draft package",
+        "reasoning": "The composer revised weekday load and adherence supports without changing the accepted hard constraints or non-clinical scope.",
+        "alternativeConsidered": "Restarting intake or ignoring the review guidance was rejected.",
+        "handoffTo": "Review & Adaptation Agent",
+        "confidence": "medium"
+      },
+      {
+        "step": 6,
+        "protocolState": "review_active",
+        "actor": "Review & Adaptation Agent",
+        "title": "Review & Adaptation Agent",
+        "items": [
+          "Reviewer disagreed with the initial weekday burden and sent the draft back for a bounded rewrite.",
+          "The rewritten package reduced weekday workload and meal-prep friction before approval.",
+          "The review step checked the draft against hard constraints, adherence fit, and non-clinical scope.",
+          "The reviewed package preserves the original hard constraints while improving deliverability.",
+          "Plan remains within non-clinical scope."
+        ],
+        "authority": "Approve the rewritten draft once the bounded issues have been resolved.",
+        "decision": "Approve rewritten draft as reviewed package",
+        "reasoning": "The revised draft now fits the adherence concerns closely enough to release while preserving the original hard constraints.",
+        "alternativeConsidered": "Requesting another rewrite before user inspection was rejected.",
+        "handoffTo": "Human-in-the-Loop",
+        "confidence": "medium"
+      },
+      {
+        "step": 7,
+        "protocolState": "review_active",
+        "actor": "Controller",
+        "title": "Final Output",
+        "items": [
+          "Version 1 plan ready.",
+          "Reviewed plan package returned to the user interface.",
+          "The workflow now waits for the user's post-review decision."
+        ],
+        "authority": "Expose the reviewed package only after the authorized review outcome is available.",
+        "decision": "Wait for user inspection",
+        "reasoning": "The reviewed package is ready, but completion authority remains with the human user.",
+        "alternativeConsidered": "Completing the session automatically after review was rejected.",
+        "handoffTo": "Human-in-the-Loop",
+        "confidence": "high"
+      },
+      {
+        "step": 8,
+        "protocolState": "awaiting_user_acceptance",
+        "actor": "Human-in-the-Loop",
+        "title": "Human Actor",
+        "items": [
+          "The end user inspected the reviewed package and accepted it.",
+          "No further revision was requested at this stage."
+        ],
+        "authority": "Own the final acceptance decision for the reviewed package.",
+        "decision": "Accept reviewed package",
+        "reasoning": "The package looks feasible enough to try without another bounded revision.",
+        "alternativeConsidered": "Requesting another revision was rejected by the human at this checkpoint.",
+        "handoffTo": "Controller",
+        "confidence": "human_authority"
+      },
+      {
+        "step": 9,
+        "protocolState": "awaiting_user_acceptance",
+        "actor": "Controller",
+        "title": "Completed",
+        "items": [
+          "Version 2 marked as accepted.",
+          "The workflow entered a completed state after user approval."
+        ],
+        "authority": "Close the session only after the user has accepted the current reviewed package.",
+        "decision": "Mark session completed",
+        "reasoning": "The human has exercised final approval authority, so the controller can close the current planning cycle.",
+        "alternativeConsidered": "Keeping the session open without need was rejected.",
+        "handoffTo": "Completed state",
+        "confidence": "high"
+      },
+      {
+        "step": 10,
+        "protocolState": "adaptation_active",
+        "actor": "Human-in-the-Loop",
+        "title": "User Feedback",
+        "items": [
+          "After trying the accepted plan, the workouts felt too long to finish consistently after class."
+        ],
+        "authority": "Report real execution evidence after trying the accepted plan.",
+        "decision": "Reopen the workflow with execution feedback",
+        "reasoning": "The user observed a real-world mismatch between the accepted plan and execution reality.",
+        "alternativeConsidered": "Keeping the accepted package unchanged despite execution failure was rejected.",
+        "handoffTo": "Review & Adaptation Agent",
+        "confidence": "human_authority"
+      },
+      {
+        "step": 11,
+        "protocolState": "adaptation_active",
+        "actor": "Review & Adaptation Agent",
+        "title": "Review & Adaptation Agent",
+        "items": [
+          "Adaptation triggered by post-acceptance execution feedback.",
+          "Goal and hard constraints were preserved.",
+          "The revised package remains within non-clinical scope.",
+          "Workout duration was reduced after the user reported time overload."
+        ],
+        "authority": "Revise the previously accepted package while preserving goal, constraints, and traceable context.",
+        "decision": "Adapt reviewed package",
+        "reasoning": "The adaptation agent disagreed with keeping the previously accepted package unchanged after execution evidence showed it was no longer feasible.",
+        "alternativeConsidered": "Restarting the whole workflow from scratch or silently keeping the old plan was rejected.",
+        "handoffTo": "Human-in-the-Loop",
+        "confidence": "medium"
+      },
+      {
+        "step": 12,
+        "protocolState": "adaptation_active",
+        "actor": "Controller",
+        "title": "Adapted Output",
+        "items": [
+          "Version 3 adapted plan package ready.",
+          "State-preserving revision applied after execution feedback.",
+          "The revised package is ready for user inspection."
+        ],
+        "authority": "Return the adapted package for renewed human inspection rather than auto-completing the session.",
+        "decision": "Wait for post-adaptation user inspection",
+        "reasoning": "Adaptation changed the package materially, so the user must inspect the revised version explicitly.",
+        "alternativeConsidered": "Marking the adapted package as accepted automatically was rejected.",
+        "handoffTo": "Human-in-the-Loop",
+        "confidence": "high"
+      }
+    ],
+    "transitions": [
+      {
+        "step": 1,
+        "from": "intake_active",
+        "to": "constraint_check_active",
+        "reason": "Structured intake completed.",
+        "authorizedBy": "Intake & Profile Builder"
+      },
+      {
+        "step": 2,
+        "from": "constraint_check_active",
+        "to": "plan_composition_active",
+        "reason": "Constraint report cleared planning.",
+        "authorizedBy": "Constraint & Risk Checker"
+      },
+      {
+        "step": 3,
+        "from": "plan_composition_active",
+        "to": "review_active",
+        "reason": "Draft passed to review.",
+        "authorizedBy": "Plan Composer"
+      },
+      {
+        "step": 4,
+        "from": "review_active",
+        "to": "plan_composition_active",
+        "reason": "Reviewer requested a bounded rewrite before approval.",
+        "authorizedBy": "Review & Adaptation Agent"
+      },
+      {
+        "step": 5,
+        "from": "plan_composition_active",
+        "to": "review_active",
+        "reason": "Revised draft returned to review for approval.",
+        "authorizedBy": "Plan Composer"
+      },
+      {
+        "step": 6,
+        "from": "review_active",
+        "to": "awaiting_user_acceptance",
+        "reason": "Reviewed package ready for user inspection.",
+        "authorizedBy": "Review & Adaptation Agent"
+      },
+      {
+        "step": 7,
+        "from": "awaiting_user_acceptance",
+        "to": "completed",
+        "reason": "User accepted the reviewed package.",
+        "authorizedBy": "Human-in-the-Loop"
+      },
+      {
+        "step": 8,
+        "from": "completed",
+        "to": "adaptation_active",
+        "reason": "Execution feedback triggered a revision cycle.",
+        "authorizedBy": "Human-in-the-Loop"
+      },
+      {
+        "step": 9,
+        "from": "adaptation_active",
+        "to": "awaiting_user_acceptance",
+        "reason": "Adapted package returned for user inspection.",
+        "authorizedBy": "Review & Adaptation Agent"
+      }
+    ],
+    "runSummary": {
+      "outcome": "adapted_plan_ready",
+      "hardConstraintCount": 4,
+      "softConstraintCount": 2,
+      "handoffCount": 9,
+      "traceEntries": 12,
+      "transitions": 9
+    }
+  }
+}

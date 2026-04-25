@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constraint-Aware Fitness Planner - Evaluation Evidence View</title>
+  <style>
+    :root {
+      --bg: #f5efe4;
+      --card: #fffaf1;
+      --ink: #24364a;
+      --muted: #6b7785;
+      --accent: #c96f3b;
+      --line: #e3d5c0;
+      --ok: #2c7a52;
+      --warn: #9b6a1d;
+      --chip: #f0e5d5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+
+    .wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 32px;
+    }
+
+    .hero, .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 14px 28px rgba(36, 54, 74, 0.08);
+    }
+
+    .hero {
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 42px;
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 980px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1.8fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 20px 22px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .kpi {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: #fffdfa;
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .kpi span {
+      color: var(--muted);
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    th, td {
+      border-top: 1px solid var(--line);
+      padding: 10px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .chip {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--chip);
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    .ok { color: var(--ok); }
+    .warn { color: var(--warn); }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    li { margin-bottom: 8px; }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Phase 3 Reviewer Support</p>
+      <h1>Evaluation Evidence View</h1>
+      <p class="subtitle">
+        This page turns the exported evidence package into a single reviewer-facing screen so the screenshot set includes an explicit evaluation/results view, not only workflow UI captures.
+      </p>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Summary Metrics</h2>
+        <div class="kpis">
+          <div class="kpi"><strong>14</strong><span>Total evaluated cases</span></div>
+          <div class="kpi"><strong>14</strong><span>Full passes</span></div>
+          <div class="kpi"><strong>2</strong><span>Remaining scope limits</span></div>
+          <div class="kpi"><strong>7/7</strong><span>Deterministic core stability checks passed</span></div>
+        </div>
+        <p class="small">
+          Source artifacts: <code>eval/evaluation_results.csv</code>,
+          <code>outputs/demo_outputs/scenario_trace_index.md</code>, and
+          <code>outputs/exported_artifacts/stability_check.json</code>, and
+          <code>outputs/exported_artifacts/extended_evaluation_snapshot.json</code>.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Scenario Outcome Snapshot</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Case</th>
+              <th>Scenario</th>
+              <th>Final State</th>
+              <th>Outcome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>P3-01</td><td>Baseline</td><td>completed</td><td class="ok">pass</td></tr>
+            <tr><td>P3-02</td><td>Clarification</td><td>awaiting_clarification</td><td class="ok">pass</td></tr>
+            <tr><td>P3-03</td><td>Prioritization</td><td>awaiting_prioritization</td><td class="ok">pass</td></tr>
+            <tr><td>P3-04</td><td>Medical boundary</td><td>stopped_boundary</td><td class="ok">pass</td></tr>
+            <tr><td>P3-05</td><td>Uncertainty</td><td>awaiting_clarification</td><td class="ok">pass</td></tr>
+            <tr><td>P3-06</td><td>Adaptation</td><td>awaiting_user_acceptance</td><td class="ok">pass</td></tr>
+            <tr><td>P3-07</td><td>Revision</td><td>completed</td><td class="ok">pass</td></tr>
+            <tr><td>P3-X01</td><td>Stacked ambiguity + tradeoff</td><td>awaiting_clarification</td><td class="ok">pass</td></tr>
+            <tr><td>P3-X02</td><td>Boundary evasion</td><td>stopped_boundary</td><td class="ok">pass</td></tr>
+            <tr><td>P3-R01</td><td>Grounding regression</td><td>awaiting_user_acceptance</td><td class="ok">pass</td></tr>
+            <tr><td>P3-R02</td><td>Rewrite visibility regression</td><td>awaiting_user_acceptance</td><td class="ok">pass</td></tr>
+            <tr><td>P3-U01</td><td>Busy student persona</td><td>awaiting_user_acceptance</td><td class="ok">pass</td></tr>
+            <tr><td>P3-U02</td><td>Higher-resource gym persona</td><td>awaiting_user_acceptance</td><td class="ok">pass</td></tr>
+            <tr><td>P3-U03</td><td>Cautious recomposition persona</td><td>awaiting_user_acceptance</td><td class="ok">pass</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel">
+        <h2>Evidence Files Visible</h2>
+        <div>
+          <span class="chip">sample_runs/ 7 JSON traces</span>
+          <span class="chip">automatic_evaluation_snapshot.json</span>
+          <span class="chip">stability_check.json</span>
+          <span class="chip">clarification_resume_demo.json</span>
+          <span class="chip">prioritization_resume_demo.json</span>
+          <span class="chip">extended_evaluation_snapshot.json</span>
+          <span class="chip">extended_runs/ 7 JSON traces</span>
+          <span class="chip">evaluation_results.csv</span>
+          <span class="chip">evaluation_scope_note.md</span>
+          <span class="chip">failure_log.md</span>
+          <span class="chip">version_notes.md</span>
+        </div>
+        <ul>
+          <li>Trace exports show final protocol state, transition counts, and acceptance status.</li>
+          <li>The end-to-end baseline trace now exposes agent authority, decision reasoning, rejected alternatives, confidence, handoff targets, and packet-level coordination evidence in one place.</li>
+          <li>Dedicated continuation exports show paused clarification and prioritization sessions resuming after human updates.</li>
+          <li>The stability snapshot verifies deterministic repeated-run consistency across all 7 cases.</li>
+          <li>The extended snapshot now shows two adversarial passes, including the upgraded stacked-blocker clarification checkpoint and the strengthened governance detector.</li>
+          <li>The failure log records concrete interaction fixes honestly, while `eval/evaluation_scope_note.md` makes clear that the current package is still internal scenario evaluation rather than an external user study.</li>
+        </ul>
+        <p class="small">
+          Generated evidence command: <code>node scripts/run_evaluation.mjs</code>
+        </p>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

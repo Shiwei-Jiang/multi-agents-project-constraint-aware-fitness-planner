@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1200" viewBox="0 0 2200 1200">
+  <style>
+    .title { font: 700 34px Arial, sans-serif; fill: #17324d; }
+    .subtitle { font: 500 18px Arial, sans-serif; fill: #5b7186; }
+    .nodeTitle { font: 700 20px Arial, sans-serif; fill: #17324d; }
+    .nodeText { font: 500 15px Arial, sans-serif; fill: #314c63; }
+    .label { font: 700 16px Arial, sans-serif; fill: #3e6280; }
+    .node { fill: #f8fbff; stroke: #2f618b; stroke-width: 3; rx: 20; ry: 20; }
+    .decision { fill: #fff8eb; stroke: #946200; stroke-width: 3; }
+    .stop { fill: #fff2f0; stroke: #c53d2a; stroke-width: 3; rx: 20; ry: 20; }
+    .state { fill: #eef8f0; stroke: #2f7a3f; stroke-width: 3; rx: 20; ry: 20; }
+    .line { stroke: #426b8d; stroke-width: 4; fill: none; marker-end: url(#arrowBlue); }
+    .lineStop { stroke: #c53d2a; stroke-width: 4; fill: none; marker-end: url(#arrowRed); }
+    .stateLine { stroke: #2f7a3f; stroke-width: 3.5; fill: none; stroke-dasharray: 12 8; marker-end: url(#arrowGreen); }
+  </style>
+  <defs>
+    <marker id="arrowBlue" markerWidth="14" markerHeight="14" refX="11" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,11 L12,5.5 z" fill="#426b8d"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="14" markerHeight="14" refX="11" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,11 L12,5.5 z" fill="#c53d2a"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="14" markerHeight="14" refX="11" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,11 L12,5.5 z" fill="#2f7a3f"/>
+    </marker>
+  </defs>
+
+  <text x="70" y="75" class="title">Constraint-Aware Fitness Planner: Final Architecture</text>
+  <text x="70" y="112" class="subtitle">Final workflow showing role separation, clarification, human prioritization, safe-stop, review, and stateful adaptation</text>
+
+  <!-- Top row -->
+  <rect x="90" y="210" width="260" height="120" class="node"/>
+  <text x="178" y="258" class="nodeTitle">User</text>
+  <text x="132" y="290" class="nodeText">Submits profile, resolves tradeoffs,</text>
+  <text x="116" y="314" class="nodeText">and can request revision or inspect results</text>
+
+  <rect x="470" y="200" width="420" height="140" class="node"/>
+  <text x="568" y="254" class="nodeTitle">1. Intake &amp; Profile Builder</text>
+  <text x="540" y="288" class="nodeText">Structures goal, restrictions, schedule,</text>
+  <text x="587" y="312" class="nodeText">equipment, and missing fields</text>
+
+  <polygon points="1080,190 1215,270 1080,350 945,270" class="decision"/>
+  <text x="1018" y="258" class="nodeTitle">Profile</text>
+  <text x="997" y="288" class="nodeTitle">complete?</text>
+
+  <rect x="1470" y="210" width="440" height="120" class="node"/>
+  <text x="1580" y="258" class="nodeTitle">Clarification Questions</text>
+  <text x="1578" y="290" class="nodeText">Follow-up before planning continues</text>
+
+  <!-- Middle row -->
+  <rect x="370" y="500" width="420" height="140" class="node"/>
+  <text x="444" y="554" class="nodeTitle">2. Constraint &amp; Risk Checker</text>
+  <text x="454" y="588" class="nodeText">Detects ambiguity, hard conflicts,</text>
+  <text x="444" y="612" class="nodeText">and clinical boundary violations</text>
+
+  <polygon points="1080,495 1230,575 1080,655 930,575" class="decision"/>
+  <text x="1010" y="563" class="nodeTitle">Safe and</text>
+  <text x="971" y="593" class="nodeTitle">resolvable?</text>
+
+  <rect x="1490" y="460" width="420" height="120" class="stop"/>
+  <text x="1602" y="508" class="nodeTitle">Boundary Warning</text>
+  <text x="1570" y="540" class="nodeText">Stop, explain non-clinical scope,</text>
+  <text x="1590" y="564" class="nodeText">and recommend a professional</text>
+
+  <rect x="1490" y="700" width="420" height="120" class="node"/>
+  <text x="1592" y="748" class="nodeTitle">Human Prioritization</text>
+  <text x="1580" y="780" class="nodeText">User resolves conflicting requirements</text>
+
+  <!-- Bottom row -->
+  <rect x="150" y="870" width="360" height="140" class="node"/>
+  <text x="266" y="924" class="nodeTitle">3. Plan Composer</text>
+  <text x="209" y="958" class="nodeText">Drafts nutrition, workout, weekly</text>
+  <text x="236" y="982" class="nodeText">structure, and rationale</text>
+
+  <rect x="700" y="870" width="500" height="140" class="node"/>
+  <text x="796" y="924" class="nodeTitle">4. Review &amp; Adaptation Agent</text>
+  <text x="812" y="958" class="nodeText">Checks realism, adherence fit, scope,</text>
+  <text x="782" y="982" class="nodeText">and applies bounded revision when needed</text>
+
+  <polygon points="1530,870 1670,940 1530,1010 1390,940" class="decision"/>
+  <text x="1436" y="947" class="nodeTitle">User Decision?</text>
+
+  <rect x="1830" y="870" width="300" height="140" class="node"/>
+  <text x="1898" y="924" class="nodeTitle">Accepted Output</text>
+  <text x="1888" y="958" class="nodeText">Accepted plan, rationale, warnings,</text>
+  <text x="1912" y="982" class="nodeText">and next-step guidance</text>
+
+  <!-- State -->
+  <rect x="190" y="1070" width="1000" height="110" class="state"/>
+  <text x="520" y="1113" class="nodeTitle">Versioned Session State</text>
+  <text x="282" y="1142" class="nodeText">profile | missing fields | constraint report | plan versions | review notes</text>
+  <text x="332" y="1165" class="nodeText">human choices | feedback log | escalation status</text>
+
+  <!-- Main flow -->
+  <path d="M350 270 L470 270" class="line"/>
+  <path d="M890 270 L1080 270" class="line"/>
+  <path d="M1240 270 L1470 270" class="line"/>
+  <text x="1358" y="248" class="label">no</text>
+
+  <!-- Clarification return -->
+  <path d="M1690 330 L1690 390 L210 390 L210 330" class="line"/>
+
+  <!-- Intake complete to checker -->
+  <path d="M1080 350 L1080 500 L790 500" class="line"/>
+  <text x="1104" y="438" class="label">yes</text>
+
+  <path d="M790 575 L930 575" class="line"/>
+
+  <!-- Clinical boundary -->
+  <path d="M1230 545 L1490 520" class="lineStop"/>
+  <text x="1316" y="490" class="label" fill="#c53d2a">no: clinical boundary</text>
+
+  <!-- Resolvable yes to plan composer -->
+  <path d="M1080 655 L1080 800 L330 800 L330 870" class="line"/>
+  <text x="1100" y="734" class="label">yes</text>
+
+  <!-- Unresolved tradeoff -->
+  <path d="M1230 625 L1490 760" class="line"/>
+  <text x="1360" y="680" class="label">no: unresolved tradeoff</text>
+
+  <path d="M1490 820 L1490 900 L1200 900" class="line"/>
+
+  <!-- Composer to review -->
+  <path d="M510 930 L700 930" class="line"/>
+
+  <!-- Review to user decision -->
+  <path d="M1200 940 L1390 940" class="line"/>
+
+  <!-- User-requested bounded revision -->
+  <path d="M1530 870 L1530 820 L1260 820 L1260 990 L1200 990" class="line"/>
+  <text x="1284" y="892" class="label">request revision</text>
+
+  <!-- Accept to output -->
+  <path d="M1700 940 L1830 940" class="line"/>
+  <text x="1762" y="918" class="label">accept</text>
+
+  <!-- Feedback from output back to review -->
+  <path d="M1830 1010 L1830 1050 L950 1050 L950 1010" class="line"/>
+  <text x="1290" y="1036" class="label">structured post-execution feedback</text>
+
+  <!-- Shared state vertical connections: adjusted so arrowheads don't collide with boxes -->
+  <path d="M330 1070 L330 1018" class="stateLine"/>
+  <path d="M590 1070 L590 644" class="stateLine"/>
+  <path d="M830 1070 L830 348" class="stateLine"/>
+  <path d="M1010 1070 L1010 1018" class="stateLine"/>
+  <text x="520" y="1044" class="label" fill="#2f7a3f">shared session state read/write</text>
+</svg>

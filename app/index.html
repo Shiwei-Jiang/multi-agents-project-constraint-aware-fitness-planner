@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constraint-Aware Fitness Planner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Phase 3 Final Artifact · Track B Interactive Submission</p>
+      <h1>Constraint-Aware Fitness Planner</h1>
+      <p class="subtitle">A runnable, inspectable planning workflow for non-clinical fitness support that can pause on ambiguity, expose tradeoffs, coordinate bounded agent handoffs, and hand the user a shareable reviewed plan instead of only a demo trace.</p>
+      <div class="meta-strip">
+        <span>Roles: Intake, Constraint Checker, Plan Composer, Review & Adaptation</span>
+        <span>Evidence: traces, state, saved scenario outputs</span>
+        <span>Scope: non-clinical decision support</span>
+      </div>
+    </div>
+    <aside class="hero-panel">
+      <label for="scenarioSelect">Scenario preset</label>
+      <select id="scenarioSelect">
+        <option value="baseline">Baseline constrained planning</option>
+        <option value="clarification">Clarification for ambiguous trigger history</option>
+        <option value="prioritization">Human prioritization on infeasible goal mix</option>
+        <option value="medicalBoundary">Safety boundary stop</option>
+        <option value="uncertainty">Missing-field uncertainty handling</option>
+        <option value="adaptation">Adaptation after accepted plan fails</option>
+        <option value="revision">User-requested revision before acceptance</option>
+      </select>
+      <div class="hero-actions">
+        <button id="loadScenario" class="secondary">Load Scenario</button>
+        <button id="exportTrace" class="ghost">Export Current Trace JSON</button>
+        <button id="exportPlan" class="ghost">Export Reviewed Plan Summary</button>
+        <a class="panel-link" href="../docs/evaluation_evidence_view.html">Open Evaluation Evidence View</a>
+      </div>
+      <p class="hero-note">This interactive UI mirrors the same workflow logic used by the reproducible evaluation runner in `scripts/run_evaluation.mjs`.</p>
+    </aside>
+  </header>
+
+  <main class="layout">
+    <section class="panel panel-intake">
+      <div class="panel-header">
+        <h2>1. Intake</h2>
+        <p class="section-note">The user provides a bounded profile that the system normalizes before any planning step is allowed to proceed.</p>
+      </div>
+      <div class="grid">
+        <div class="compact-row">
+          <label>Goal
+            <select id="goal">
+              <option value="">Select a goal</option>
+              <option value="fat loss">Fat loss</option>
+              <option value="muscle gain">Muscle gain</option>
+              <option value="recomposition">Body recomposition</option>
+            </select>
+          </label>
+          <label>Training days per week
+            <input id="trainingDays" type="number" min="0" max="7" placeholder="3">
+          </label>
+        </div>
+        <label>Body context or recovery notes
+          <textarea id="bodyContext" rows="3" placeholder="e.g. Busy semester, low recovery confidence, prefers practical changes over aggressive ones."></textarea>
+        </label>
+        <label>Available equipment
+          <select id="equipment">
+            <option value="">Select equipment</option>
+            <option value="resistance bands">Resistance bands</option>
+            <option value="bodyweight only">Bodyweight only</option>
+            <option value="gym access">Gym access</option>
+          </select>
+        </label>
+        <label>Dietary restrictions
+          <input id="dietaryRestrictions" type="text" placeholder="e.g. gluten intolerance">
+        </label>
+        <label>Symptom triggers or reactions
+          <input id="symptomTriggers" type="text" placeholder="e.g. shellfish causes hives">
+        </label>
+        <label>Adherence concerns
+          <input id="adherenceConcerns" type="text" placeholder="e.g. low weekday motivation, low meal prep capacity">
+        </label>
+        <label>Budget level
+          <select id="budget">
+            <option value="">Select budget</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+        <label>Question or note from user
+          <textarea id="userQuestion" rows="4" placeholder="Describe any extra question, concern, or request."></textarea>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="runWorkflow">Run Workflow</button>
+        <button id="continueWorkflow" class="secondary">Continue After Update</button>
+        <button id="runAdaptation" class="secondary">Apply Post-Acceptance Feedback</button>
+        <button id="acceptPlan" class="ghost">Accept Plan</button>
+        <button id="requestRevision" class="ghost">Request Bounded Revision</button>
+      </div>
+      <p class="actions-note">Clarification and prioritization pause the workflow until the user updates the intake and clicks Continue After Update. The adaptation branch now accepts structured post-acceptance execution feedback before reopening the workflow.</p>
+      <p id="intakePrompt" class="actions-note">Fill in the intake fields, then run the workflow to generate a formal plan trace.</p>
+
+      <section class="feedback-card">
+        <h3>Post-Acceptance Feedback Input</h3>
+        <p class="mini-note">Use this input after accepting a reviewed plan. It lets the adaptation branch react to real execution feedback instead of only a fixed demo event.</p>
+        <label>Feedback category
+          <select id="feedbackCategory">
+            <option value="time_overload">Workout took too long</option>
+            <option value="meal_prep">Meal prep was too hard</option>
+            <option value="motivation_drop">Motivation dropped after missed days</option>
+            <option value="symptom_concern">New or unclear symptom concern</option>
+            <option value="general">General execution problem</option>
+          </select>
+        </label>
+        <label>Execution feedback note
+          <textarea id="feedbackNotes" rows="4" placeholder="Example: I could finish the weekend session, but weekday workouts felt too long and I skipped meal prep twice."></textarea>
+        </label>
+      </section>
+
+      <section class="feedback-card">
+        <h3>Human Resolution Options</h3>
+        <p id="resolutionHint" class="mini-note">When the system pauses for an infeasible tradeoff, these workflow-owned options let the user resolve it explicitly instead of relying on a hidden controller choice.</p>
+        <div class="actions">
+          <button id="chooseFeasiblePlan" class="secondary" type="button">Prefer Feasible Plan</button>
+          <button id="expandResources" class="ghost" type="button">Keep Goal, Expand Resources</button>
+        </div>
+      </section>
+
+      <section class="feedback-card trust-card">
+        <h3>Trust and Scope Cues</h3>
+        <ul>
+          <li>Non-clinical only: the artifact does not diagnose, prescribe, or interpret medication.</li>
+          <li>Ambiguity is surfaced explicitly instead of being filled in with confident guesses.</li>
+          <li>Conflicting tradeoffs are routed back to the user when the system should not decide for them.</li>
+          <li>The browser artifact is local-only and uses visible session state rather than hidden persistent memory.</li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="panel output panel-workflow">
+      <div class="panel-header">
+        <h2>2. Workflow Output</h2>
+        <p class="section-note">This panel shows role handoffs, branching decisions, and stop or revision logic so the system’s agentic behavior is inspectable rather than implied.</p>
+      </div>
+      <div id="statusCard" class="status neutral">Waiting for input.</div>
+      <section class="draft-feedback">
+        <div class="summary-head">
+          <div>
+            <h3>Live Intake Feedback</h3>
+            <p class="summary-note">This preview reacts while you edit inputs. It does not replace the formal workflow trace; it tells you whether the current draft is ready to rerun.</p>
+          </div>
+        </div>
+        <div id="draftFeedback" class="plan-summary empty">Start typing or load a scenario to see draft readiness feedback.</div>
+      </section>
+      <section class="summary-block">
+        <div class="summary-head">
+          <div>
+            <h3>Current Checkpoint</h3>
+            <p class="summary-note">This card explains what the workflow is waiting on, why, and what the safe next move is.</p>
+          </div>
+        </div>
+        <div id="checkpointCard" class="plan-summary empty">Run a scenario to surface the current workflow checkpoint.</div>
+      </section>
+      <section class="summary-block">
+        <div class="summary-head">
+          <div>
+            <h3>Your Reviewed Personalized Fitness Plan</h3>
+            <p class="summary-note">This delivered artifact is meant to be usable by the end user and inspectable by a trainer, dietitian, or referring provider without digging through raw JSON.</p>
+          </div>
+          <div id="stateBadge" class="state-badge">idle</div>
+        </div>
+        <div id="planSummary" class="plan-summary empty">Run a scenario to generate a reviewed plan package.</div>
+      </section>
+      <section class="summary-block">
+        <div class="summary-head">
+          <div>
+            <h3>Version-to-Version Change View</h3>
+            <p class="summary-note">This comparison makes review, revision, and adaptation changes inspectable without forcing the reviewer to diff JSON manually.</p>
+          </div>
+        </div>
+        <div id="changeComparison" class="plan-summary empty">Generate a reviewed package, then request a revision or adaptation to compare versions.</div>
+      </section>
+      <div id="workflowLog" class="log"></div>
+    </section>
+
+    <section class="panel output panel-state">
+      <div class="panel-header">
+        <h2>3. State and Coordination Evidence</h2>
+        <p class="section-note">Shared state, transition history, and saved actions make coordination and bounded autonomy easy to inspect during grading.</p>
+      </div>
+      <div class="evidence-grid">
+        <section class="mini-panel">
+          <h3>Allowed Next Actions</h3>
+          <p class="mini-note">These are the currently permitted workflow moves for the active session state.</p>
+          <ul id="availableActions" class="chips-list"></ul>
+        </section>
+        <section class="mini-panel">
+          <h3>Agent Handoff Ledger</h3>
+          <p class="mini-note">These published packets make the coordination layer visible as bounded agent-to-agent exchanges instead of a single opaque controller log.</p>
+          <div id="handoffLedger" class="transition-list"></div>
+        </section>
+        <section class="mini-panel">
+          <h3>Protocol Transitions</h3>
+          <div id="transitionList" class="transition-list"></div>
+        </section>
+      </div>
+      <pre id="stateView" class="state"></pre>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Phase 3 package emphasis: runnable system, visible coordination, exported traces, reproducible evaluation, failure analysis, and honest scope boundaries.</p>
+  </footer>
+
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

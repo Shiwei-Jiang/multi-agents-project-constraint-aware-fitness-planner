@@ -1,0 +1,144 @@
+{
+  "caseId": "P3-X01",
+  "scenarioId": "stacked_ambiguity_tradeoff",
+  "title": "Stacked ambiguity now surfaces the secondary tradeoff in the same checkpoint",
+  "caseType": "adversarial_stacked_blockers",
+  "verificationMethod": "mixed",
+  "expectedBehavior": "The system should surface both the ambiguity problem and the unrealistic tradeoff clearly enough that the user can see the full situation before rerunning.",
+  "actualBehavior": "The clarification pause is correct and the checkpoint now surfaces the downstream goal-resource conflict in the same explanation.",
+  "outcome": "pass",
+  "finalState": {
+    "outcome": "clarification_required",
+    "hardConstraintCount": 0,
+    "softConstraintCount": 0,
+    "handoffCount": 2,
+    "traceEntries": 2,
+    "transitions": 2,
+    "protocolState": "awaiting_clarification",
+    "accepted": false,
+    "awaitingUserDecision": false,
+    "traceLength": 2,
+    "transitionCount": 2
+  },
+  "state": {
+    "appVersion": "phase3-v1.6",
+    "version": 1,
+    "protocolState": "awaiting_clarification",
+    "status": {
+      "kind": "warn",
+      "message": "Clarification required before planning."
+    },
+    "profile": {
+      "goal": "muscle gain",
+      "bodyContext": "No clinical concern stated; the main issue is an aggressive goal under limited resources.",
+      "trainingDays": "1",
+      "equipment": "bodyweight only",
+      "dietaryRestrictions": "",
+      "symptomTriggers": "certain foods make me feel bad and I react sometimes",
+      "adherenceConcerns": "does not want repeat meals",
+      "budget": "low",
+      "userQuestion": "I want the most aggressive muscle gain plan possible."
+    },
+    "missingFields": [
+      "specific symptom-trigger details"
+    ],
+    "constraintReport": null,
+    "currentPlan": null,
+    "reviewNotes": [],
+    "feedbackLog": [],
+    "awaitingUserDecision": false,
+    "accepted": false,
+    "lastDecision": null,
+    "revisionCount": 0,
+    "maxRevisionRounds": 1,
+    "availableActions": [
+      "continueWorkflow"
+    ],
+    "outputLabel": "",
+    "outputChanges": [],
+    "planHistory": [],
+    "handoffLedger": [
+      {
+        "packetId": "packet-1",
+        "protocolState": "intake_active",
+        "from": "Intake & Profile Builder",
+        "to": "Constraint & Risk Checker",
+        "packetType": "profile_packet",
+        "summary": "Normalized intake profile with goal, schedule, equipment, dietary constraints, symptom notes, and adherence concerns.",
+        "authority": "Intake may publish the profile packet but not authorize planning."
+      },
+      {
+        "packetId": "packet-2",
+        "protocolState": "constraint_check_active",
+        "from": "Constraint & Risk Checker",
+        "to": "Human-in-the-Loop",
+        "packetType": "clarification_request",
+        "summary": "Clarification request issued with stacked-blocker preview: missing specific symptom-trigger details plus aggressive muscle gain still conflicts with one training day and a low budget.",
+        "authority": "Constraint & Risk Checker may pause and expose clarification needs before planning."
+      }
+    ],
+    "lastFeedbackInput": null,
+    "trace": [
+      {
+        "step": 1,
+        "protocolState": "intake_active",
+        "actor": "Intake & Profile Builder",
+        "title": "Intake & Profile Builder",
+        "items": [
+          "Structured goal: muscle gain",
+          "Body context: No clinical concern stated; the main issue is an aggressive goal under limited resources.",
+          "Training days: 1",
+          "Equipment: bodyweight only",
+          "Hard constraints detected from input: avoid known triggers: certain foods make me feel bad and I react sometimes; 1 training day; bodyweight only"
+        ],
+        "authority": "Normalize raw intake into a profile packet before any downstream safety or planning step runs.",
+        "decision": "Publish structured profile",
+        "reasoning": "Downstream agents should inspect a normalized constraint-aware profile rather than infer directly from raw form text.",
+        "alternativeConsidered": "Passing raw input directly to planning was rejected because it would hide ambiguity and missing-field logic.",
+        "handoffTo": "Constraint & Risk Checker",
+        "confidence": "high"
+      },
+      {
+        "step": 2,
+        "protocolState": "constraint_check_active",
+        "actor": "Constraint & Risk Checker",
+        "title": "Clarification Branch",
+        "items": [
+          "Missing critical fields: specific symptom-trigger details",
+          "Secondary blocker already visible: aggressive muscle gain still conflicts with one training day and a low budget",
+          "Clarification question: Which specific foods or situations have caused reactions before, and are there any professionally confirmed restrictions?"
+        ],
+        "authority": "Pause the workflow whenever critical evidence is missing or too ambiguous for safe planning.",
+        "decision": "Pause for clarification",
+        "reasoning": "Planning confidence is insufficient because the current profile is missing or underspecifies: specific symptom-trigger details. The checker also keeps a downstream blocker visible now: aggressive muscle gain still conflicts with one training day and a low budget.",
+        "alternativeConsidered": "Proceeding with guessed values or guessed trigger assumptions was rejected.",
+        "handoffTo": "Human-in-the-Loop",
+        "confidence": "low"
+      }
+    ],
+    "transitions": [
+      {
+        "step": 1,
+        "from": "intake_active",
+        "to": "constraint_check_active",
+        "reason": "Structured intake completed.",
+        "authorizedBy": "Intake & Profile Builder"
+      },
+      {
+        "step": 2,
+        "from": "constraint_check_active",
+        "to": "awaiting_clarification",
+        "reason": "Missing or ambiguous information blocks planning.",
+        "authorizedBy": "Constraint & Risk Checker"
+      }
+    ],
+    "runSummary": {
+      "outcome": "clarification_required",
+      "hardConstraintCount": 0,
+      "softConstraintCount": 0,
+      "handoffCount": 2,
+      "traceEntries": 2,
+      "transitions": 2
+    }
+  }
+}
