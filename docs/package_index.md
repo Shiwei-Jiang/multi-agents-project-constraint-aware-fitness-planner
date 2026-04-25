@@ -2,6 +2,9 @@
 
 This file is the quickest way to orient a reviewer to the authoritative Phase 3 materials.
 
+This project package is mirrored on GitHub:
+https://github.com/Shiwei-Jiang/multi-agents-project-constraint-aware-fitness-planner.git
+
 ## Start Here
 
 1. Open `app/index.html` for the interactive artifact.

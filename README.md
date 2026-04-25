@@ -2,6 +2,10 @@
 
 Authoritative **Phase 3 v1.6** package for **Agentic Systems Studio**.
 
+## Repository
+
+https://github.com/Shiwei-Jiang/multi-agents-project-constraint-aware-fitness-planner.git
+
 ## Team
 
 Shiwei Jiang

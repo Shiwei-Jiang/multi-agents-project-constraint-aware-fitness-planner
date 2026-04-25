@@ -12,6 +12,7 @@ output:
 - **Team:** Shiwei Jiang
 - **Selected track:** Track B
 - **Artifact type:** usable local browser artifact with scenario-based evaluation, supporting technical evidence, and final documentation
+- **Repository:** https://github.com/Shiwei-Jiang/multi-agents-project-constraint-aware-fitness-planner.git
 
 ## Problem and Target User
 
