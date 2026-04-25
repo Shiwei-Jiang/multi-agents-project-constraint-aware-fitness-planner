@@ -49,4 +49,7 @@ Expected result:
 These are intentionally pending until final submission assembly:
 
 - final 5-minute video URL in `media/demo_video_link.txt`
-- final GitHub repository URL in `phase_submissions/phase3/submission_packet_source.md`
+
+Completed submission link:
+
+- GitHub repository URL is listed in `phase_submissions/phase3/submission_packet_source.md`

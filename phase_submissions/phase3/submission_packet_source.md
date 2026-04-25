@@ -27,9 +27,9 @@ Current review package for local inspection:
 
 - Clean local repository folder: `final_repo_ready/team-project/`
 
-GitHub submission status:
+GitHub repository:
 
-- TODO: add the final GitHub repository URL after the repository is created and pushed.
+- https://github.com/Shiwei-Jiang/multi-agents-project-constraint-aware-fitness-planner.git
 
 ## Video Link
 
