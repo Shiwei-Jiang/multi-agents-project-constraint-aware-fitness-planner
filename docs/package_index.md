@@ -28,7 +28,7 @@ https://github.com/Shiwei-Jiang/multi-agents-project-constraint-aware-fitness-pl
 - `screenshots/screenshot_index.md`
 - `eval/`
 - `outputs/`
-- `presentation/FINAL_DECK.pptx`
+- `presentation/`
 - `phase_submissions/phase3/submission_packet_source.md`
 - `phase_submissions/phase3/submission_packet_source.pdf`
 

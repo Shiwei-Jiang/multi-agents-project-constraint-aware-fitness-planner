@@ -15,7 +15,7 @@ This checklist maps the main Phase 3 rubric claims to concrete files in this cle
 | Evaluation package | `eval/test_cases.csv`; `eval/evaluation_results.csv`; `eval/failure_log.md`; `eval/version_notes.md`; `eval/evaluation_scope_note.md` |
 | Outputs and exported artifacts | `outputs/sample_runs/`; `outputs/extended_runs/`; `outputs/demo_outputs/`; `outputs/exported_artifacts/` |
 | AI usage disclosure | `AI_USAGE.md` |
-| Final presentation deck | `presentation/FINAL_DECK.pptx` |
+| Presentation materials | `presentation/FINAL_DECK.pptx`; `presentation/VIDEO_PRESENTATION.pptx`; `presentation/VIDEO_PRESENTATION_SCRIPT.md` |
 | Phase archives | `phase_submissions/phase1/`; `phase_submissions/phase2/`; `phase_submissions/phase3/` |
 
 ## Rubric Evidence Map

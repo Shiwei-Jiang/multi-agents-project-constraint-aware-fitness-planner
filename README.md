@@ -123,7 +123,7 @@ This generates:
 - `outputs/`: saved traces and exported evidence artifacts
 - `data/`: manifest describing the intentional no-external-dataset design
 - `media/`: demo video link file; currently marked TODO until the final video URL is added
-- `presentation/`: final presentation deck used to support the 5-minute project video
+- `presentation/`: final presentation deck, video-specific deck, and recording script used to support the 5-minute project video
 - `phase_submissions/phase1`, `phase_submissions/phase2`, `phase_submissions/phase3`: prior deliverables and final packet source materials
 
 ## Evaluation Summary
