@@ -15,7 +15,7 @@ This checklist maps the main Phase 3 rubric claims to concrete files in this cle
 | Evaluation package | `eval/test_cases.csv`; `eval/evaluation_results.csv`; `eval/failure_log.md`; `eval/version_notes.md`; `eval/evaluation_scope_note.md` |
 | Outputs and exported artifacts | `outputs/sample_runs/`; `outputs/extended_runs/`; `outputs/demo_outputs/`; `outputs/exported_artifacts/` |
 | AI usage disclosure | `AI_USAGE.md` |
-| Presentation materials | `presentation/FINAL_DECK.pptx`; `presentation/VIDEO_PRESENTATION.pptx`; `presentation/VIDEO_PRESENTATION_SCRIPT.md` |
+| Presentation materials | `presentation/FINAL_DECK.pptx`; `presentation/VIDEO_PRESENTATION.pptx`; `media/demo_video_link.txt` |
 | Phase archives | `phase_submissions/phase1/`; `phase_submissions/phase2/`; `phase_submissions/phase3/` |
 
 ## Rubric Evidence Map
@@ -46,10 +46,7 @@ Expected result:
 
 ## Known Pending Submission Items
 
-These are intentionally pending until final submission assembly:
-
-- final 5-minute video URL in `media/demo_video_link.txt`
-
-Completed submission link:
+Completed submission links:
 
 - GitHub repository URL is listed in `phase_submissions/phase3/submission_packet_source.md`
+- 5-minute project video URL is listed in `media/demo_video_link.txt`

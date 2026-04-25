@@ -33,7 +33,8 @@ GitHub repository:
 
 ## Video Link
 
-- TODO: add the final 5-minute video URL in `media/demo_video_link.txt` before final submission.
+- https://drive.google.com/file/d/1t9Of0rJVdyEZj3Q7Pm51GctNnXfZJSWq/view?usp=drive_link
+- Local reference file: `media/demo_video_link.txt`
 
 ## Final Report
 
@@ -117,4 +118,4 @@ Primary files:
 - The report PDF has been regenerated from the current Phase 3 source.
 - The screenshot set has been regenerated after the latest `phase3-v1.6` artifact and evidence update.
 - The evaluation exports have been regenerated from `node scripts/run_evaluation.mjs`.
-- The remaining manual deliverable is the final approved project video link or final video reference to replace the current TODO in `media/demo_video_link.txt`.
+- The final approved project video link is now recorded in `media/demo_video_link.txt`.

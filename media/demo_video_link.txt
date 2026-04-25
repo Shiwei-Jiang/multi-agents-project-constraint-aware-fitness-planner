@@ -1,8 +1,2 @@
-TODO: Final Phase 3 project video link pending
-
-Current status: the clean GitHub-ready package has been assembled before the final 5-minute demo video URL is available.
-
-Before final Canvas or GitHub submission, replace this TODO with one of the following:
-
-- the final shareable GitHub, Drive, YouTube, or Canvas-compatible video URL
-- the final approved local video filename if the course staff is reviewing an attached project folder directly
+Phase 3 five-minute project video:
+https://drive.google.com/file/d/1t9Of0rJVdyEZj3Q7Pm51GctNnXfZJSWq/view?usp=drive_link
