@@ -935,7 +935,15 @@ The table below makes the connection to the course material explicit.
 
 ## Individual Contribution Reflection
 
-This project was completed as a solo submission. The main contribution was not only building the artifact, but also tightening the connection between architecture, evidence, and evaluation. The most important Phase 3 improvement was turning a Phase 2 prototype into a submission-ready package with reproducible traces, explicit failure analysis, and documentation that stays aligned with what the code actually does.
+This project was completed as a solo submission, so my individual contribution covered the full path from concept refinement to final packaging: architecture, implementation, evaluation design, evidence generation, failure analysis, documentation, screenshots, presentation materials, and repository cleanup.
+
+In Phase 2, I committed to a controller-mediated multi-agent workflow rather than a one-shot fitness-plan generator. The Phase 2 plan defined four internal roles plus a human-in-the-loop actor, explicit branch states, structured handoff artifacts, bounded stopping behavior, review-driven revision, and adaptation after real-world feedback. My Phase 3 work was mainly about making those commitments visible and verifiable in the final artifact instead of leaving them only as architecture prose.
+
+The largest implementation contribution was converting the prototype into a more inspectable workflow package. I kept the centralized controller design, but made the role boundaries clearer through trace entries, authorized state transitions, and handoff-ledger packets. I also closed gaps that the Phase 2 plan had left partially demonstrated: clarification and prioritization became resumable checkpoints, adaptation was gated to post-acceptance feedback, optional body-context intake became visible in the UI, and the review path now shows a real `Review -> Plan Composer -> Review` loop before release.
+
+I also built the final evaluation and evidence layer around the Phase 2 evaluation plan. Instead of relying only on a few happy-path examples, I expanded the package into 14 current-version cases across core workflow, adversarial, regression, and persona-variation checks. I generated saved traces, stability snapshots, extended-run artifacts, screenshot evidence, and reviewer-facing summaries so the system could be judged by its process: which branch was taken, which agent authorized it, what evidence was preserved, and how earlier failures changed the implementation.
+
+Finally, I treated the final submission itself as part of the engineering work. I aligned the README, final report, screenshot index, submission packet, AI usage disclosure, architecture diagram, video link, and GitHub repository so they all point to the same current Phase 3 artifact. The main lesson from doing the project solo is that an agentic system is not only the workflow logic; it is also the evidence trail around that logic. The final package is therefore my contribution as both builder and auditor: a bounded, human-in-the-loop planning artifact whose claims are supported by visible state, saved outputs, and documented iteration.
 
 ## Files Referenced Most Directly in This Report
 
