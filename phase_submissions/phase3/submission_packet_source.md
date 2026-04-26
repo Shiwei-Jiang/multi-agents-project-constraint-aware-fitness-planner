@@ -25,7 +25,7 @@ Constraint-Aware Fitness Planner is a local browser artifact for non-clinical di
 
 Current review package for local inspection:
 
-- Clean local repository folder: `final_repo_ready/team-project/`
+- Clean local repository folder: this repository root
 
 GitHub repository:
 
