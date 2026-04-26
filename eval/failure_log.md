@@ -49,7 +49,7 @@ The file is intentionally historical: it includes problems found in older versio
 - **what_triggered_the_problem:** Clarification scenario during final evaluation  
 - **what_happened:** The workflow correctly stopped and asked a targeted follow-up question, but the browser artifact originally forced a full rerun instead of resuming the paused session  
 - **severity:** medium  
-- **fix_attempted:** Added `continueWorkflow` to the engine, surfaced a `Continue After Update` UI action, and exported `clarification_resume_demo.json` as concrete evidence of same-session continuation  
+- **fix_attempted:** Added `continueWorkflow` to the engine, surfaced a `Continue After Update` UI action, and exported `outputs/exported_artifacts/clarification_resume_demo.json` as concrete evidence of same-session continuation  
 - **current_status:** fixed in `phase3-v1.0`  
 - **evidence:** `outputs/sample_runs/P3-02_clarification.json`; `outputs/exported_artifacts/clarification_resume_demo.json`; `src/engine.mjs`; `app/app.js`  
 
@@ -63,7 +63,7 @@ The file is intentionally historical: it includes problems found in older versio
 - **what_triggered_the_problem:** Prioritization scenario during final evaluation  
 - **what_happened:** The workflow correctly escalated the infeasible tradeoff to the human, but the browser artifact originally could not resume the paused session after the user revised priorities  
 - **severity:** medium  
-- **fix_attempted:** Reused `continueWorkflow` for `awaiting_prioritization`, exposed the continuation path in the UI, and exported `prioritization_resume_demo.json` as evidence of resumed planning and review  
+- **fix_attempted:** Reused `continueWorkflow` for `awaiting_prioritization`, exposed the continuation path in the UI, and exported `outputs/exported_artifacts/prioritization_resume_demo.json` as evidence of resumed planning and review  
 - **current_status:** fixed in `phase3-v1.0`  
 - **evidence:** `outputs/sample_runs/P3-03_prioritization.json`; `outputs/exported_artifacts/prioritization_resume_demo.json`; `src/engine.mjs`; `app/app.js`  
 

@@ -15,7 +15,7 @@ Generated with `node scripts/run_evaluation.mjs` against workflow engine version
 - `baseline` shows the main interactive workflow with visible handoffs, reviewed output, and acceptance.
 - `medicalBoundary` shows a safety stop instead of plan generation.
 - `prioritization` shows a human escalation branch instead of silent tradeoff resolution.
-- `clarification_resume_demo.json` and `prioritization_resume_demo.json` show that the paused workflow can now continue in the same session after human updates.
+- `outputs/exported_artifacts/clarification_resume_demo.json` and `outputs/exported_artifacts/prioritization_resume_demo.json` show that the paused workflow can now continue in the same session after human updates.
 - `revision` shows one bounded user-requested revision before completion.
 - `adaptation` shows state-preserving revision after an accepted plan is reopened by structured post-acceptance execution feedback.
 - exported traces now include agent authority, decision, reasoning, rejected alternatives, confidence labels, and explicit handoff targets.

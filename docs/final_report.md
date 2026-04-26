@@ -4,7 +4,6 @@ output:
   pdf_document: default
   html_document: default
 ---
-# Constraint-Aware Fitness Planner Final Report
 
 ## Project Information
 
@@ -646,7 +645,7 @@ Fix implemented:
 
 - added `continueWorkflow`
 - exposed `Continue After Update` in the UI
-- exported `clarification_resume_demo.json`
+- exported `outputs/exported_artifacts/clarification_resume_demo.json`
 
 Evidence after fix:
 
@@ -670,7 +669,7 @@ Fix implemented:
 
 - reused `continueWorkflow` for `awaiting_prioritization`
 - added prioritization affordances in the UI
-- exported `prioritization_resume_demo.json`
+- exported `outputs/exported_artifacts/prioritization_resume_demo.json`
 
 Evidence after fix:
 
