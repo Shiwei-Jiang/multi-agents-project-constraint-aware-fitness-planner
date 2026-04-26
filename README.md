@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Constraint-Aware Fitness Planner
 
 Authoritative **Phase 3 v1.6** package for **Agentic Systems Studio**.
@@ -19,6 +24,35 @@ Track B: usable interactive artifact with scenario-based evaluation, visible amb
 Constraint-Aware Fitness Planner is a **non-clinical fitness planning system** for users who want a diet and workout plan that respects real-world constraints such as food intolerances, symptom-trigger histories, optional body-context notes, limited equipment, limited time, budget, and adherence challenges. The core problem is agentic because the system must decide **when to ask for clarification, when to stop for safety, when to route a conflict back to the human, when review should send a draft back for a bounded rewrite, and how to preserve state across revision and post-acceptance execution feedback**. This package contains a usable browser artifact, mirrored workflow logic for the browser and evaluation runner, saved scenario traces, extended adversarial and persona evaluation artifacts, a completed evaluation package, a failure log, architecture materials, screenshots, and final report source.
 
 The current coordination layer is intentionally a **demonstration-level policy layer** for branching, scope control, and inspectable workflow evidence. It is not presented as a comprehensive clinical or optimization engine.
+
+
+## Project Structure Overview (Quick Navigation)
+
+This repository is organized so a reviewer can quickly locate all required materials without searching across multiple sections.
+
+### Main directories
+
+- `app/` — Interactive browser-based artifact (UI + workflow demonstration)
+- `src/` — Core workflow engine (evaluation-aligned source of truth)
+- `docs/` — Final report, architecture diagrams, and supporting documentation
+- `screenshots/` — UI and workflow screenshots with captions
+- `eval/` — Evaluation package (test cases, results, failure log, version notes)
+- `outputs/` — Saved traces, exported artifacts, and evaluation evidence
+- `media/` — Video link for the 5-minute project demo
+- `phase_submissions/` — Previous phase deliverables (reference only)
+
+### Key materials (direct access)
+
+- Final report: `docs/final_report.pdf`
+- Architecture diagram: `docs/phase3_architecture_workflow.png`
+- Evaluation results: `eval/evaluation_results.csv`
+- Failure analysis: `eval/failure_log.md`
+- Scenario traces: `outputs/sample_runs/`
+- Exported evaluation artifacts: `outputs/exported_artifacts/`
+- Screenshots: `screenshots/`
+- Video: `media/demo_video_link.txt`
+
+> Note: `phase_submissions/` contains earlier phase materials and is not required for final review.
 
 ## Phase 3 Start Here
 
