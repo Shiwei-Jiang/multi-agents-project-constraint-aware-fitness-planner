@@ -40,7 +40,7 @@ GitHub repository:
 
 - Source: `docs/final_report.md`
 - Exported PDF: `docs/final_report.pdf`
-- Coverage: problem and user, architecture, implementation choices, evaluation methodology, results, failure analysis, governance, formal artifact schemas, lessons learned, and future improvements
+- Coverage: problem and user, architecture, implementation choices, evaluation methodology, results, failure analysis, governance, formal artifact schemas, lessons learned, future improvements, reflection on improvements and next steps, and individual contribution reflection
 
 ## Architecture Diagram
 

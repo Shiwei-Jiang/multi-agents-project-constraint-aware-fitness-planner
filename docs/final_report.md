@@ -1,8 +1,8 @@
 ---
 title: "Constraint-Aware Fitness Planner Final Report"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 # Constraint-Aware Fitness Planner Final Report
 
@@ -924,7 +924,7 @@ The table below makes the connection to the course material explicit.
 - Safety and ambiguity handling should be tested with adversarial wording, not only the obvious phrasing used during design.
 - Agentic coordination becomes more believable when disagreement, authority, and rejected alternatives are exposed directly in the evidence layer.
 
-## Future Improvements
+## Reflection on Improvements, Future Improvements, and Next Steps
 
 - add a richer open-ended adaptation policy so free-text execution feedback can influence more than a bounded category-based rule set
 - broaden the current intent-aware governance layer beyond hand-authored patterns so more boundary-adjacent phrasing can be caught without relying on enumerated examples
