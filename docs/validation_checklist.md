@@ -10,7 +10,7 @@ This checklist maps the main Phase 3 rubric claims to concrete files in this cle
 | Platform or dependency notes | `platform_notes.md` |
 | Final report source and PDF | `docs/final_report.md`; `docs/final_report.pdf` |
 | Course-concept interpretation | `docs/course_concepts_crosswalk.md` |
-| Architecture diagram | `docs/architecture_diagram.svg`; `docs/architecture_diagram_compact.png` |
+| Architecture diagram | Primary Phase 3 diagram: `docs/phase3_architecture_workflow.png`; supporting/legacy diagram files: `docs/architecture_diagram.svg`; `docs/architecture_diagram_compact.png` |
 | Screenshots and screenshot index | `screenshots/`; `screenshots/screenshot_index.md` |
 | Evaluation package | `eval/test_cases.csv`; `eval/evaluation_results.csv`; `eval/failure_log.md`; `eval/version_notes.md`; `eval/evaluation_scope_note.md` |
 | Outputs and exported artifacts | `outputs/sample_runs/`; `outputs/extended_runs/`; `outputs/demo_outputs/`; `outputs/exported_artifacts/` |

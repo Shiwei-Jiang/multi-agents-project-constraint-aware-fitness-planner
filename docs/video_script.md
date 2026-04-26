@@ -8,7 +8,7 @@ Show the problem, the usable interactive artifact, the coordination logic, the e
 
 - [README.md](../README.md)
 - [app/index.html](../app/index.html)
-- [docs/architecture_diagram.svg](architecture_diagram.svg)
+- [docs/phase3_architecture_workflow.png](phase3_architecture_workflow.png)
 - [eval/evaluation_results.csv](../eval/evaluation_results.csv)
 - [eval/failure_log.md](../eval/failure_log.md)
 - [outputs/demo_outputs/end_to_end_trace_baseline.md](../outputs/demo_outputs/end_to_end_trace_baseline.md)
@@ -46,7 +46,7 @@ Say:
 
 Show:
 
-- `docs/architecture_diagram.svg`
+- `docs/phase3_architecture_workflow.png`
 - point to the controller and the five roles
 - point to the reviewed package and evidence outputs
 
@@ -135,7 +135,7 @@ Show:
 
 ### Must show from evidence and outputs
 
-- [docs/architecture_diagram.svg](architecture_diagram.svg)
+- [docs/phase3_architecture_workflow.png](phase3_architecture_workflow.png)
 - [screenshots/08_evaluation_outputs.png](../screenshots/08_evaluation_outputs.png)
 - [eval/evaluation_results.csv](../eval/evaluation_results.csv)
 - [eval/failure_log.md](../eval/failure_log.md)

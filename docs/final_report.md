@@ -92,6 +92,8 @@ The system keeps the **centralized controller pattern promised in Phase 2**. It 
 
 The controller remains responsible for protocol-state transitions. The agents remain responsible for producing the structured outputs that authorize those transitions. In other words, the artifact still follows the Phase 2 state-machine design, but the evidence layer now makes coordination look like **agent-driven control under a controller**, rather than a generic pipeline.
 
+![Phase 3 human-in-the-loop multi-agent architecture and workflow](phase3_architecture_workflow.png)
+
 ### Course design frame: role-based cooperation with centralized control
 
 This architecture follows the course's multi-agent design emphasis on **explicit interaction structures, role-based division of labor, communication infrastructure, and control tradeoffs**. The project uses **role-based cooperation** rather than debate, voting, or decentralized negotiation because the task is safety-sensitive and benefits from clear authority boundaries. Intake, checking, composition, review, and human decision checkpoints each own different parts of the workflow, while the controller keeps the overall protocol auditable.
@@ -909,7 +911,7 @@ The table below makes the connection to the course material explicit.
 | L4 bounded autonomy | the system can draft and revise, but cannot diagnose, prescribe, or decide unresolved tradeoffs alone | `outputs/sample_runs/P3-03_prioritization.json`; `outputs/sample_runs/P3-04_medicalBoundary.json` |
 | L5 memory should be justified | session state supports local continuity; persistent memory is deliberately excluded | `src/engine.mjs`; `outputs/sample_runs/P3-06_adaptation.json` |
 | L6 role-based multi-agent cooperation | specialized roles communicate through controller-routed handoff packets | `outputs/sample_runs/P3-01_baseline.json`; `screenshots/07_state_and_transitions.png` |
-| L6 centralized coordination tradeoff | controller improves auditability and safety enforcement but limits open-ended autonomy | `docs/architecture_diagram.svg`; `outputs/demo_outputs/end_to_end_trace_baseline.md` |
+| L6 centralized coordination tradeoff | controller improves auditability and safety enforcement but limits open-ended autonomy | `docs/phase3_architecture_workflow.png`; `outputs/demo_outputs/end_to_end_trace_baseline.md` |
 | L7 process-over-outcome evaluation | evaluation checks trace, state, handoffs, safety, and state preservation, not only pass/fail | `eval/test_cases.csv`; `eval/evaluation_results.csv` |
 | L7 observability and failure diagnosis | traces and failure logs are used to identify, fix, and regression-test weak behaviors | `eval/failure_log.md`; `eval/version_notes.md`; `outputs/extended_runs/` |
 | L7 reliability and stability | deterministic repeated-run stability is exported as formal evidence | `outputs/exported_artifacts/stability_check.json` |
@@ -954,5 +956,5 @@ This project was completed as a solo submission. The main contribution was not o
 - `outputs/demo_outputs/scenario_trace_index.md`
 - `outputs/demo_outputs/end_to_end_trace_baseline.md`
 - `outputs/exported_artifacts/extended_evaluation_snapshot.json`
-- `docs/architecture_diagram.svg`
+- `docs/phase3_architecture_workflow.png`
 - `screenshots/`

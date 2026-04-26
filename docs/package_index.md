@@ -12,7 +12,8 @@ https://github.com/Shiwei-Jiang/multi-agents-project-constraint-aware-fitness-pl
 3. Check `eval/evaluation_results.csv` and `eval/failure_log.md` for current-version results versus historical failures.
 4. Open `docs/evaluation_evidence_view.html` for the reviewer-facing evidence overview.
 5. Open `screenshots/screenshot_index.md` for the visual evidence map.
-6. Open `phase_submissions/phase3/submission_packet_source.pdf` for the submission packet.
+6. Open `docs/phase3_architecture_workflow.png` for the primary Phase 3 architecture and workflow diagram.
+7. Open `phase_submissions/phase3/submission_packet_source.pdf` for the submission packet.
 
 ## Authoritative Phase 3 Files
 
@@ -21,6 +22,7 @@ https://github.com/Shiwei-Jiang/multi-agents-project-constraint-aware-fitness-pl
 - `scripts/run_evaluation.mjs`
 - `docs/final_report.md`
 - `docs/final_report.pdf`
+- `docs/phase3_architecture_workflow.png`
 - `docs/validation_checklist.md`
 - `docs/course_concepts_crosswalk.md`
 - `docs/evaluation_evidence_view.html`

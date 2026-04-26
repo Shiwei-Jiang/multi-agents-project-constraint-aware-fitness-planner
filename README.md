@@ -35,6 +35,10 @@ The current coordination layer is intentionally a **demonstration-level policy l
 5. Inspect [outputs/demo_outputs/scenario_trace_index.md](outputs/demo_outputs/scenario_trace_index.md) and the JSON traces in [outputs/sample_runs](outputs/sample_runs).
 6. Review [eval/evaluation_results.csv](eval/evaluation_results.csv) and [eval/failure_log.md](eval/failure_log.md).
 
+## Architecture Diagram
+
+The primary Phase 3 architecture and workflow diagram is [docs/phase3_architecture_workflow.png](docs/phase3_architecture_workflow.png). It shows the human actor, four role-based agents, shared session state, stop and escalation branches, handoff packets, and the reviewed/adapted plan output.
+
 ## Track B Reviewer Guide
 
 | Track B expectation | Open here | Scenario or artifact | What should be visible |

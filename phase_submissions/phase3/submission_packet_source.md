@@ -44,8 +44,8 @@ GitHub repository:
 
 ## Architecture Diagram
 
-- Primary architecture figure: `docs/architecture_diagram.svg`
-- Supplementary coordination figure: `docs/architecture_diagram_compact.png`
+- Primary Phase 3 architecture and workflow figure: `docs/phase3_architecture_workflow.png`
+- Supporting/legacy architecture figures retained for continuity: `docs/architecture_diagram.svg`; `docs/architecture_diagram_compact.png`
 - Shows: bounded agent roles, controller-managed branches, handoff packets, stop conditions, and human-in-the-loop checkpoints
 
 ## Screenshot Index
