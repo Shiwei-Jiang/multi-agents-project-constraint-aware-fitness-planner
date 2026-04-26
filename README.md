@@ -35,6 +35,18 @@ The current coordination layer is intentionally a **demonstration-level policy l
 5. Inspect [outputs/demo_outputs/scenario_trace_index.md](outputs/demo_outputs/scenario_trace_index.md) and the JSON traces in [outputs/sample_runs](outputs/sample_runs).
 6. Review [eval/evaluation_results.csv](eval/evaluation_results.csv) and [eval/failure_log.md](eval/failure_log.md).
 
+## Submission Materials
+
+| Material | Location |
+|---|---|
+| Final report | [docs/final_report.pdf](docs/final_report.pdf) and [docs/final_report.md](docs/final_report.md) |
+| Phase 3 submission packet | [phase_submissions/phase3/submission_packet_source.pdf](phase_submissions/phase3/submission_packet_source.pdf) |
+| Architecture diagram | [docs/phase3_architecture_workflow.png](docs/phase3_architecture_workflow.png) |
+| Screenshot index | [screenshots/screenshot_index.md](screenshots/screenshot_index.md) |
+| Evaluation package | [eval/test_cases.csv](eval/test_cases.csv), [eval/evaluation_results.csv](eval/evaluation_results.csv), [eval/failure_log.md](eval/failure_log.md), [eval/version_notes.md](eval/version_notes.md) |
+| Video link | [media/demo_video_link.txt](media/demo_video_link.txt) |
+| AI usage disclosure | [AI_USAGE.md](AI_USAGE.md) |
+
 ## Architecture Diagram
 
 ![Phase 3 human-in-the-loop multi-agent architecture and workflow](docs/phase3_architecture_workflow.png)
@@ -70,6 +82,10 @@ Recommended reviewer path:
 5. Open `docs/evaluation_evidence_view.html` or `outputs/demo_outputs/scenario_trace_index.md` to inspect the evidence layer.
 
 ## How To Run
+
+### Setup
+
+No package installation or external API key is required. Download or clone the repository, then open the project folder locally.
 
 ### Browser demo
 
