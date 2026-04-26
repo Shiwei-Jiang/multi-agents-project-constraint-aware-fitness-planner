@@ -41,6 +41,14 @@ The current coordination layer is intentionally a **demonstration-level policy l
 
 The primary Phase 3 architecture and workflow diagram is [docs/phase3_architecture_workflow.png](docs/phase3_architecture_workflow.png). It shows the human actor, four role-based agents, shared session state, stop and escalation branches, handoff packets, and the reviewed/adapted plan output.
 
+## Agent Roles
+
+- **Human-in-the-Loop Actor:** provides the initial profile, resolves ambiguity or tradeoffs, accepts or rejects the reviewed plan, and provides post-acceptance execution feedback.
+- **Intake & Profile Builder:** turns raw user input into a structured profile packet and flags missing or ambiguous information.
+- **Constraint & Risk Checker:** checks ambiguity, feasibility conflicts, and non-clinical safety boundaries before planning is allowed.
+- **Plan Composer:** drafts the diet and workout plan only after the request is safe, feasible, and authorized for planning.
+- **Review & Adaptation Agent:** reviews the draft, sends bounded revision notes back to the composer when needed, and adapts an accepted plan after structured execution feedback.
+
 ## Track B Reviewer Guide
 
 | Track B expectation | Open here | Scenario or artifact | What should be visible |
