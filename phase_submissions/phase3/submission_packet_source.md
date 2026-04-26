@@ -96,20 +96,52 @@ Primary files:
 
 ## Submitted Files And Folders
 
-- `README.md`
-- `AI_USAGE.md`
-- `platform_notes.md`
-- `app/`
-- `src/`
-- `scripts/`
-- `docs/`
-- `screenshots/`
-- `eval/`
-- `outputs/`
-- `data/`
-- `media/`
-- `presentation/`
-- `phase_submissions/`
+The submission includes the following files and directories for inspection:
+
+Top-level files:
+
+- `README.md` — project overview, setup instructions, Track B reviewer guide, and evaluation summary
+- `AI_USAGE.md` — disclosure of AI tools used, prompts, manual edits, and verification steps
+- `platform_notes.md` — environment and platform details
+
+Core system:
+
+- `app/` — browser-based interactive artifact (main Track B deliverable, UI + workflow integration)
+- `src/` — core workflow engine (`engine.mjs`) implementing state machine, agents, and coordination logic
+- `scripts/` — evaluation runner (`run_evaluation.mjs`) for reproducible testing
+
+Documentation and report materials:
+
+- `docs/` — final report, architecture diagrams, screenshot index, evaluation evidence view, and supporting documentation
+
+Screenshots:
+
+- `screenshots/` — UI and workflow screenshots used as visual evidence in the report
+
+Evaluation package:
+
+- `eval/` — test cases, evaluation results, failure log, scope notes, and version notes
+
+Outputs and evidence artifacts:
+
+- `outputs/` — exported artifacts, scenario traces, evaluation snapshots, and sample runs
+
+Data layer:
+
+- `data/` — manifest describing the no-external-dataset design
+
+Media:
+
+- `media/` — video link file (`demo_video_link.txt`)
+
+Presentation materials:
+
+- `presentation/` — final slide decks and presentation materials
+
+Previous phase materials (for reference only):
+
+- `phase_submissions/` — Phase 1, Phase 2, and Phase 3 submission artifacts
+
 
 ## Notes For Final Submission Assembly
 
