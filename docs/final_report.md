@@ -1,8 +1,8 @@
 ---
 title: "Constraint-Aware Fitness Planner Final Report"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ## Project Information
@@ -593,7 +593,9 @@ Two interpretation constraints matter before reading the `14 / 14` outcome:
 
 All 14 evaluation cases resulted in successful system behavior, with saved outputs aligning with the expected protocol states and outcome classes defined in `eval/test_cases.csv`. The deterministic core suite still passes cleanly, which is useful for reproducibility and branch coverage. The refined extended layer now includes two adversarial passes, one of which used to be a visible limitation before the clarification checkpoint was upgraded to expose stacked blockers jointly. That makes the evaluation stronger than a self-confirming `7 / 7` sheet while still preserving historical weaknesses honestly in the failure log instead of pretending they never existed.
 
-The visual evidence is now more trustworthy for the same reason: the screenshot set was refreshed after the `phase3-v1.6` update, so the reviewer no longer sees an older UI or older evaluation snapshot while reading newer analysis. That improves portfolio polish and makes the interpretation easier to trust at a glance.
+While all current-version cases pass, this does not imply universal robustness. Instead, it reflects correctness within the bounded scenario suite.
+
+The visual evidence is now more trustworthy for the same reason: the screenshot set was refreshed after the `phase3-v1.6` update, so the reviewer no longer sees an older UI or older evaluation snapshot while reading newer analysis. 
 
 The strongest result is now the combination of:
 
