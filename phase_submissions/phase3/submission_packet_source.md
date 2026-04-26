@@ -109,6 +109,7 @@ Primary files:
 - `data/`
 - `media/`
 - `presentation/`
+- `phase_submissions/`
 
 ## Notes For Final Submission Assembly
 
