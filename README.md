@@ -37,6 +37,8 @@ The current coordination layer is intentionally a **demonstration-level policy l
 
 ## Architecture Diagram
 
+![Phase 3 human-in-the-loop multi-agent architecture and workflow](docs/phase3_architecture_workflow.png)
+
 The primary Phase 3 architecture and workflow diagram is [docs/phase3_architecture_workflow.png](docs/phase3_architecture_workflow.png). It shows the human actor, four role-based agents, shared session state, stop and escalation branches, handoff packets, and the reviewed/adapted plan output.
 
 ## Track B Reviewer Guide
