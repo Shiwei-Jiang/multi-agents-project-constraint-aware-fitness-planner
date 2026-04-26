@@ -918,20 +918,31 @@ The table below makes the connection to the course material explicit.
 
 ## Lessons Learned
 
-- A convincing prototype is not enough for final submission quality; exported evidence matters.
-- Agentic value becomes clearer when the workflow trace is separated from the delivered artifact.
-- Small implementation details, such as path handling in evaluation scripts, can become real reproducibility failures.
-- Safety and ambiguity handling should be tested with adversarial wording, not only the obvious phrasing used during design.
-- Agentic coordination becomes more believable when disagreement, authority, and rejected alternatives are exposed directly in the evidence layer.
+The strongest lesson from this project is that the hard part of the system is not producing fitness-plan text. The hard part is deciding **when to clarify, when to stop, when to escalate, when to revise, and when to adapt**. That is why the final artifact emphasizes branch behavior, state, handoffs, and evidence rather than treating the reviewed plan as the only meaningful output.
+
+A second lesson is that agentic behavior becomes more credible when it is inspectable. Early versions could describe the intended roles, but the coordination became much easier to trust after the UI and traces exposed agent authority, decisions, rejected alternatives, confidence labels, and handoff targets. The visible `Review -> Plan Composer -> Review` loop mattered because it showed a real bounded disagreement and rewrite path rather than a hidden internal edit.
+
+I also learned that final-package quality depends on evidence hygiene. A prototype can look convincing in a demo, but a reviewer needs files that can be opened, rerun, and cross-checked. Saved traces, evaluation tables, failure logs, screenshot captions, regenerated PDFs, and package indexes are not decorative; they are part of the system's trust layer.
+
+The safety and governance work taught the same lesson from a different angle. Boundary behavior should be tested with adversarial or boundary-adjacent wording, not only with obvious examples. The current governance layer is stronger because historical misses stayed visible in the failure log and were converted into regression or adversarial evidence instead of disappearing after the fix.
+
+Finally, reproducibility is fragile in ordinary ways. Small implementation details, such as path handling in a directory with spaces or stale screenshot/PDF references, can become real submission-quality failures. Treating those issues as part of the engineering work made the final package more reliable and easier to review.
 
 ## Reflection on Improvements, Future Improvements, and Next Steps
 
-- add a richer open-ended adaptation policy so free-text execution feedback can influence more than a bounded category-based rule set
-- broaden the current intent-aware governance layer beyond hand-authored patterns so more boundary-adjacent phrasing can be caught without relying on enumerated examples
-- allow the user to compare draft, reviewed, and adapted versions side by side
-- add richer feasibility checks beyond the current hand-authored rule set
-- add a wider scenario library for adversarial testing and longitudinal adaptation
-- add external user or third-party observational testing to validate usability and robustness beyond the current structured scenario suite
+The most important Phase 3 improvement was converting the Phase 2 architecture into a usable and inspectable Track B artifact. The final version now shows the user profile intake, branch states, handoff ledger, allowed next actions, raw trace JSON, reviewed plan package, plan-summary export, and evaluation evidence in a form that a reviewer can inspect directly. The package also adds a clearer primary architecture diagram, refreshed screenshots, a cleaned repository structure, and a reproducible evaluation runner.
+
+The second major improvement was making the workflow less dead-ended. Clarification and prioritization no longer function only as stop states; they can resume after the user updates the relevant information. Adaptation is now correctly gated to post-acceptance execution feedback, and user-requested revision is represented as a bounded loop rather than a full restart. These changes make the human-in-the-loop design more real.
+
+The third improvement was strengthening the evidence layer. The project now includes 14 current-version cases across core scenarios, adversarial checks, regression checks, and persona variation. The failure log preserves historical weaknesses, while the evaluation scope note states that this is internal scenario evaluation rather than an external user study. That makes the final claim narrower but more honest.
+
+The next step would be to make adaptation more open-ended. Right now, structured feedback categories and a free-text note influence bounded revision behavior, but the downstream adaptation policy is still hand-authored. A stronger version would allow free-text execution feedback to update more of the plan while preserving the same safety and traceability constraints.
+
+Another future improvement is a broader governance layer. The current intent-aware boundary detector catches more treatment-seeking and diagnostic phrasing than the earlier keyword list, but it is still rule-bounded. A more robust version would test a wider library of boundary-adjacent phrasing and periodically review false negatives, especially around symptom interpretation and medical-treatment intent.
+
+The project would also benefit from richer user-facing comparison tools. A future interface could show draft, reviewed, revised, and adapted plan versions side by side, making it easier for the user and reviewer to see exactly what changed after review or execution feedback.
+
+Finally, the evaluation should eventually move beyond internal scenario testing. The current evidence is reproducible and honest within the Phase 3 scope, but external user observation or third-party review would be needed before making stronger claims about usability, robustness, or real-world effectiveness.
 
 ## Individual Contribution Reflection
 
