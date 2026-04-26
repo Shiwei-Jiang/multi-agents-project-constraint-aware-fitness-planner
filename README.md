@@ -121,7 +121,7 @@ This generates:
 - `app/`: browser-based final artifact
 - `src/`: evaluation-facing workflow engine and source-of-truth logic for the browser bundle
 - `scripts/`: reproducible evaluation export script
-- `docs/`: final report source, architecture assets, summary, package index, evidence view, and video script
+- `docs/`: final report source, architecture assets, summary, package index, and evidence view
 - `screenshots/`: final visual evidence set and screenshot index
 - `eval/`: test cases, completed evaluation results, failure log, and version notes
 - `outputs/`: saved traces and exported evidence artifacts
@@ -184,7 +184,7 @@ In reviewer terms, the package is not arguing only that "14 cases passed." It is
 - architecture diagrams and reviewer-facing evidence views
 - workflow screenshots with captions
 - final report source and project summary
-- a video speaking outline and shot list
+- a shareable video link file for the 5-minute project video
 - richer checkpoint, trust, plan-diff, handoff-ledger, and plan-export evidence inside the interactive artifact
 
 ## Phase Continuity Note

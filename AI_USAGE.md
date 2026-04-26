@@ -12,7 +12,7 @@ This file documents Phase 3 AI assistance for the final package. Earlier AI usag
 - promoting the Phase 2 prototype into a Phase 3 final package
 - refactoring the browser-only logic into a shared workflow engine
 - generating a reproducible evaluation runner and saved evidence artifacts
-- drafting and revising the final README, evaluation files, failure log, version notes, report source, screenshot index, and video script
+- drafting and revising the final README, evaluation files, failure log, version notes, report source, screenshot index, and video support materials
 - reorganizing the repository to match the final submission structure more closely
 
 ## Prompt And Brief Output Record

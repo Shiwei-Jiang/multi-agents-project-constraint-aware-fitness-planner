@@ -446,7 +446,7 @@ Phase 2 already contained a good local prototype, but Phase 3 required a stronge
 - added a reproducible evaluation runner in `scripts/run_evaluation.mjs`
 - exported actual saved scenario traces into `outputs/sample_runs/`
 - added an automatic run snapshot in `outputs/exported_artifacts/automatic_evaluation_snapshot.json`
-- wrote final README, evaluation package, failure log, screenshot index, video script, and final report source
+- wrote final README, evaluation package, failure log, screenshot index, video support materials, and final report source
 - reorganized earlier phase materials under `phase_submissions/`
 - added structured post-acceptance feedback input, visible checkpoint guidance, trust-and-scope cues, and a version-to-version change view in the browser artifact
 - added optional body-context intake to the browser artifact and the evaluation profiles so the final intake scope matches the refined Phase 2 claim more closely

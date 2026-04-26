@@ -112,7 +112,7 @@ Major changes:
 - added `scripts/run_evaluation.mjs` for reproducible scenario exports
 - generated final saved outputs in `outputs/sample_runs/`, `outputs/demo_outputs/`, and `outputs/exported_artifacts/`
 - added repeated-run stability checking to strengthen reliability evidence
-- wrote final evaluation files, failure log, report source, screenshot index, video script, and AI usage disclosure
+- wrote final evaluation files, failure log, report source, screenshot index, video support materials, and AI usage disclosure
 
 Testing-driven changes:
 
